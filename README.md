@@ -1,4 +1,4 @@
-# Undangan Digital Fakhriy & Nova
+# Undangan Digital Fakhriy & Nisa
 
 Undangan digital resepsi pernikahan Muhammad Fakhriy Ismail, A.Md. dan Khoirunnisa Nova, S.M.
 
