@@ -219,6 +219,7 @@ img,svg{display:block}
 .tl .ic .ok{position:absolute;right:-4px;top:-4px;width:20px;height:20px;border-radius:50%;background:var(--rose);color:var(--ivory);display:grid;place-items:center;box-shadow:0 0 0 3px var(--blush-bg);transform:scale(.6);opacity:0;transition:transform .5s var(--ease-out) 1s,opacity .3s ease 1s}
 .tl .ic .ok svg{width:11px;height:11px}
 .tl.in .ic .ok{transform:none;opacity:1}
+.tl:not([data-akad="done"]) .ic .ok{display:none}
 .tl .ic.next::before,.tl .ic.next::after{content:"";position:absolute;inset:-1px;border-radius:50%;border:1px solid var(--blush-d);opacity:0;pointer-events:none}
 .tl.in .ic.next::before{animation:ping 2.8s var(--ease-out) 2s infinite}
 .tl.in .ic.next::after{animation:ping 2.8s var(--ease-out) 2.9s infinite}
@@ -759,17 +760,17 @@ body.lb-open{overflow:hidden}
     <div class="wrap center">
       <div class="script rv">rangkaian</div>
       <h2 class="title rv">Acara</h2>
-      <div class="tl rv" id="timeline">
+      <div class="tl rv" id="timeline" data-akad="soon">
         <span class="tl-line"></span>
         <div class="node">
-          <span class="ic"><svg><use href="#iAkad"/></svg><span class="ok" aria-hidden="true"><svg><use href="#iCheck"/></svg></span></span>
+          <span class="ic next"><svg><use href="#iAkad"/></svg><span class="ok" aria-hidden="true"><svg><use href="#iCheck"/></svg></span></span>
           <span class="k">Akad Nikah</span>
           <span class="v">Sabtu, 12 Desember 2026</span>
           <span class="s">Kota Bandung</span>
-          <span class="note">telah dilaksanakan</span>
+          <span class="note" id="akadNote">insya Allah akan dilaksanakan</span>
         </div>
         <div class="node">
-          <span class="ic next"><svg><use href="#iResepsi"/></svg></span>
+          <span class="ic"><svg><use href="#iResepsi"/></svg></span>
           <span class="k">Resepsi</span>
           <span class="v">Sabtu, 16 Januari 2027</span>
           <span class="s">19.00 WITA - Selesai</span>
@@ -932,6 +933,22 @@ body.lb-open{overflow:hidden}
   const $ = (s, r = document) => r.querySelector(s);
   const $$ = (s, r = document) => [...r.querySelectorAll(s)];
   const page = $('#page');
+
+  // Akad status follows the real date in Bandung (WIB, UTC+7), whatever the guest's time zone.
+  const AKAD_DAY_MS = Date.UTC(2026, 11, 11, 17, 0, 0);
+  (() => {
+    const now = Date.now();
+    const state = now < AKAD_DAY_MS ? 'soon' : now < AKAD_DAY_MS + 864e5 ? 'today' : 'done';
+    const tl = $('#timeline');
+    tl.dataset.akad = state;
+    $('#akadNote').textContent = {
+      soon: 'insya Allah akan dilaksanakan',
+      today: 'insya Allah dilaksanakan hari ini',
+      done: 'telah dilaksanakan',
+    }[state];
+    // The pulse marks the next event: the akad until it is over, then the resepsi.
+    $$('.ic', tl).forEach((ic, i) => ic.classList.toggle('next', i === (state === 'done' ? 1 : 0)));
+  })();
 
   // Guest name from ?to=, always rendered as plain text.
   const rawGuest = new URLSearchParams(location.search).get('to');
