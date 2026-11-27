@@ -767,7 +767,7 @@ body.lb-open{overflow:hidden}
           <span class="k">Akad Nikah</span>
           <span class="v">Sabtu, 12 Desember 2026</span>
           <span class="s">Kota Bandung</span>
-          <span class="note" id="akadNote">insya Allah akan dilaksanakan</span>
+          <span class="note" id="akadNote" hidden></span>
         </div>
         <div class="node">
           <span class="ic"><svg><use href="#iResepsi"/></svg></span>
@@ -941,11 +941,10 @@ body.lb-open{overflow:hidden}
     const state = now < AKAD_DAY_MS ? 'soon' : now < AKAD_DAY_MS + 864e5 ? 'today' : 'done';
     const tl = $('#timeline');
     tl.dataset.akad = state;
-    $('#akadNote').textContent = {
-      soon: 'insya Allah akan dilaksanakan',
-      today: 'insya Allah dilaksanakan hari ini',
-      done: 'telah dilaksanakan',
-    }[state];
+    // Only a past akad gets a note; before and on the day the card shows just the date and city.
+    const note = $('#akadNote');
+    note.hidden = state !== 'done';
+    note.textContent = state === 'done' ? 'telah dilaksanakan' : '';
     // The pulse marks the next event: the akad until it is over, then the resepsi.
     $$('.ic', tl).forEach((ic, i) => ic.classList.toggle('next', i === (state === 'done' ? 1 : 0)));
   })();
