@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Undangan Resepsi Fakhriy &amp; Nisa</title>
 <meta name="description" content="Undangan resepsi pernikahan Muhammad Fakhriy Ismail dan Khoirunnisa Nova, Sabtu 16 Januari 2027 di Gedung Haji Bate, Gowa.">
-<meta name="theme-color" content="#1A0307">
+<meta name="theme-color" content="#FDF7F4">
 <link rel="preload" href="font/cormorantgaramond-normal-latin.woff2" as="font" type="font/woff2" crossorigin>
 <style>
 /* Self-hosted fonts (SIL Open Font License): Cormorant Garamond, Pinyon Script, Amiri. */
@@ -19,9 +19,10 @@
 @font-face {font-family: 'Pinyon Script';font-style: normal;font-weight: 400;font-display: swap;src: url(font/pinyonscript-normal-latin-ext.woff2) format('woff2');unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C4, U+2113, U+2C60-2C7F, U+A720-A7FF;}
 @font-face {font-family: 'Pinyon Script';font-style: normal;font-weight: 400;font-display: swap;src: url(font/pinyonscript-normal-latin.woff2) format('woff2');unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;}
 :root{
-  --w950:#1A0307;--w900:#28050C;--w800:#3A0913;--w700:#53101F;--w600:#741A2C;
-  --gold:#C9A66B;--gold-l:#E7D2A6;--gold-d:#9B7842;
-  --cream:#F3EBDD;--cream2:#EADFCB;--ink:#3B1219;--ink2:#6E4C46;--line:#D5BE97;
+  --ivory:#FDF7F4;--blush-bg:#F8ECE9;--blush:#F6D3CF;--blush-d:#D07C89;
+  --rose:#7A2E3B;--rose-d:#5E1F2B;--ink:#5A3A3F;--ink2:#7A5A5E;--err:#A3263B;
+  --gold:#B08A55;--gold-s:#9A7444;--gold-t:#84603A;--gold-l:#E7D2A6;
+  --sage:#9DB89A;--sage-d:#6F8C6C;
   --serif:'Cormorant Garamond',Georgia,serif;--script:'Pinyon Script',cursive;
   --ease:cubic-bezier(.23,1,.32,1);
   --ease-out:cubic-bezier(.23,1,.32,1);
@@ -29,18 +30,18 @@
   --ease-drawer:cubic-bezier(.32,.72,0,1);
 }
 *{box-sizing:border-box}
-html{scroll-behavior:smooth;background:var(--w950)}
-body{margin:0;font-family:var(--serif);font-variant-numeric:lining-nums;color:var(--ink);background:radial-gradient(circle at 50% 0,#2b0710,var(--w950) 60%);-webkit-tap-highlight-color:transparent}
+html{scroll-behavior:smooth;background:var(--ivory)}
+body{margin:0;font-family:var(--serif);font-variant-numeric:lining-nums;color:var(--ink);background:radial-gradient(circle at 50% 0,#fbeae7,#f1e7e2 60%);-webkit-tap-highlight-color:transparent}
 body.locked{overflow:hidden}
-.page{position:relative;max-width:760px;margin:0 auto;background:var(--w900);box-shadow:0 0 0 1px #c9a66b33,0 0 80px #000a;overflow-x:clip}
+.page{position:relative;max-width:760px;margin:0 auto;background:var(--ivory);box-shadow:0 0 0 1px #b08a5533,0 0 80px #7a2e3b1f;overflow-x:clip}
 section{position:relative;scroll-margin-top:56px}
 img,svg{display:block}
 [hidden]{display:none!important}
 
 /* ---------- shared type ---------- */
 .caps{font:500 12px/1.5 var(--serif);letter-spacing:.32em;text-transform:uppercase}
-.script{font:400 clamp(34px,9vw,46px)/1.12 var(--script);color:var(--gold);padding-bottom:.06em}
-.title{font:400 clamp(30px,8vw,40px)/1 var(--serif);letter-spacing:.18em;text-transform:uppercase;margin:0}
+.script{font:400 clamp(34px,9vw,46px)/1.12 var(--script);color:var(--gold-s);padding-bottom:.06em}
+.title{font:400 clamp(30px,8vw,40px)/1 var(--serif);letter-spacing:.18em;text-transform:uppercase;margin:0;color:var(--rose)}
 .it{font-style:italic}
 .orn{width:120px;height:14px;margin:16px auto;color:var(--gold);stroke-dasharray:60;stroke-dashoffset:60;transition:stroke-dashoffset 1.4s var(--ease-io) calc(var(--d,0ms) + 150ms)}
 .orn.in{stroke-dashoffset:0}
@@ -53,18 +54,18 @@ img,svg{display:block}
 /* ---------- buttons ---------- */
 .btn{appearance:none;cursor:pointer;display:inline-flex;align-items:center;justify-content:center;gap:10px;
   font:600 12.5px var(--serif);letter-spacing:.28em;text-transform:uppercase;padding:13px 26px;border-radius:2px;
-  background:var(--w800);color:var(--gold-l);border:1px solid var(--w800);text-decoration:none;
+  background:var(--rose);color:var(--ivory);border:1px solid var(--rose);text-decoration:none;
   transition:background-color .25s ease,color .25s ease,box-shadow .25s ease,transform .16s var(--ease-out)}
 .btn:active{transform:scale(.97)}
-.btn.line{background:transparent;color:var(--w800);border-color:var(--w800)}
-.btn.gold{background:transparent;color:var(--gold-l);border-color:#c9a66b99}
+.btn.line{background:transparent;color:var(--rose);border-color:var(--rose)}
+.btn.gold{background:transparent;color:var(--rose);border-color:var(--gold)}
 .btn.link{background:none;border:0;color:var(--ink2);padding:8px 10px;letter-spacing:.22em;text-decoration:underline;text-underline-offset:5px}
 .btn.link .lbl{text-decoration:underline;text-underline-offset:5px}
 @media (hover:hover) and (pointer:fine){
-  .btn:hover{background-color:var(--w700);box-shadow:0 8px 22px #3a091355}
-  .btn.line:hover{background-color:var(--w800);color:var(--gold-l)}
-  .btn.gold:hover{background-color:#c9a66b1f}
-  .btn.link:hover{background:none;box-shadow:none;color:var(--w800)}
+  .btn:hover{background-color:var(--rose-d);box-shadow:0 8px 22px #7a2e3b33}
+  .btn.line:hover{background-color:var(--rose);color:var(--ivory)}
+  .btn.gold:hover{background-color:#f6d3cf80;box-shadow:none}
+  .btn.link:hover{background:none;box-shadow:none;color:var(--rose)}
 }
 .btn[disabled]{cursor:progress}
 .btn .lbl{display:inline-flex;align-items:center;gap:9px;transition:filter .18s ease,opacity .18s ease}
@@ -74,52 +75,50 @@ img,svg{display:block}
 .ld i{width:4px;height:4px;border-radius:50%;background:currentColor;opacity:.25;animation:ld 1s ease-in-out infinite}
 .ld i:nth-child(2){animation-delay:.15s}.ld i:nth-child(3){animation-delay:.3s}
 @keyframes ld{40%{opacity:1}}
-.btn.solid{background:var(--gold);color:var(--w900);border-color:var(--gold)}
-@media (hover:hover) and (pointer:fine){.btn.solid:hover{background-color:var(--gold-l);box-shadow:0 8px 22px #0007}}
 .btns{display:flex;flex-wrap:wrap;gap:12px;justify-content:center}
 
 /* ---------- nav ---------- */
 .nav{position:sticky;top:0;z-index:30;height:54px;display:grid;grid-template-columns:1fr 64px 1fr;align-items:center;
-  background:linear-gradient(180deg,var(--w950),var(--w900));border-bottom:1px solid #c9a66b66}
-.nav::after{content:"";position:absolute;left:0;right:0;bottom:-4px;height:1px;background:#c9a66b26}
+  background:linear-gradient(180deg,#fffaf8,var(--ivory));border-bottom:1px solid #b08a5566}
+.nav::after{content:"";position:absolute;left:0;right:0;bottom:-4px;height:1px;background:#b08a5526}
 .nav .grp{display:flex;justify-content:space-evenly}
-.nav a{font:500 clamp(9.5px,2.6vw,11px) var(--serif);letter-spacing:.2em;text-transform:uppercase;color:#e7d2a6b3;text-decoration:none;padding:8px 2px;position:relative;transition:color .25s ease}
-.nav a.on{color:var(--gold-l)}
-.nav-ind{position:absolute;left:0;bottom:12px;width:100px;height:1px;background:var(--gold);transform-origin:left;opacity:0;pointer-events:none;transition:transform .45s var(--ease-io),opacity .25s ease}
-.nav-prog{position:absolute;left:0;right:0;bottom:-1px;height:1px;background:linear-gradient(90deg,var(--gold-d),var(--gold-l));transform-origin:left;transform:scaleX(0);pointer-events:none}
+.nav a{font:500 clamp(9.5px,2.6vw,11px) var(--serif);letter-spacing:.2em;text-transform:uppercase;color:var(--ink2);text-decoration:none;padding:8px 2px;position:relative;transition:color .25s ease}
+.nav a.on{color:var(--rose)}
+.nav-ind{position:absolute;left:0;bottom:12px;width:100px;height:1px;background:var(--rose);transform-origin:left;opacity:0;pointer-events:none;transition:transform .45s var(--ease-io),opacity .25s ease}
+.nav-prog{position:absolute;left:0;right:0;bottom:-1px;height:1px;background:linear-gradient(90deg,var(--gold),var(--blush-d));transform-origin:left;transform:scaleX(0);pointer-events:none}
 .nav .logo{position:relative;height:54px}
-.nav .logo svg{position:absolute;left:50%;top:5px;width:50px;height:66px;transform:translateX(-50%);color:var(--gold);filter:drop-shadow(0 4px 8px #0008)}
-.nav .logo .bg{position:absolute;left:50%;top:5px;width:46px;height:62px;transform:translateX(-50%);border-radius:50%;background:var(--w900)}
+.nav .logo svg{position:absolute;left:50%;top:5px;width:50px;height:66px;transform:translateX(-50%);color:var(--gold-s);filter:drop-shadow(0 4px 8px #7a2e3b26)}
+.nav .logo .bg{position:absolute;left:50%;top:5px;width:46px;height:62px;transform:translateX(-50%);border-radius:50%;background:var(--ivory)}
 
 /* ---------- roses ---------- */
 .cl{position:absolute;pointer-events:none;z-index:0}
 .vig{position:absolute;inset:0;z-index:1;pointer-events:none;
-  background:radial-gradient(ellipse 58% 46% at 50% 47%,rgba(24,3,7,.9) 0%,rgba(24,3,7,.62) 55%,rgba(24,3,7,.1) 100%)}
+  background:radial-gradient(ellipse 58% 46% at 50% 47%,rgba(253,247,244,.94) 0%,rgba(253,247,244,.72) 55%,rgba(253,247,244,.1) 100%)}
 
 /* ---------- hero ---------- */
 .hero{min-height:calc(100svh - 54px);display:flex;align-items:center;justify-content:center;overflow:hidden;
-  background:radial-gradient(ellipse at 50% 40%,#3c0a14 0%,#22040a 60%,#160206 100%);padding:70px 26px 90px;color:var(--cream)}
+  background:radial-gradient(ellipse at 50% 40%,#fffaf7 0%,var(--ivory) 55%,#f7e4e0 100%);padding:70px 26px 90px;color:var(--ink)}
 .hero .in-wrap{position:relative;z-index:2;text-align:center;max-width:520px}
-.hero .names{font:400 clamp(52px,15vw,96px)/.92 var(--serif);letter-spacing:.05em;margin:0;color:#F6ECDD;text-shadow:0 2px 30px #000c}
+.hero .names{font:400 clamp(52px,15vw,96px)/.92 var(--serif);letter-spacing:.05em;margin:0;color:var(--rose);text-shadow:0 1px 18px #fdf7f4}
 .hero .names .w{display:block;white-space:nowrap}
 .hero .names .ch{display:inline-block;opacity:0;transform:translateY(.22em);filter:blur(10px);transition:opacity 1s var(--ease-out),transform 1s var(--ease-out),filter 1s var(--ease-out);transition-delay:var(--cd,0ms)}
 .hero.play .names .ch{opacity:1;transform:none;filter:none}
-.hero .amp{font:400 clamp(50px,14vw,84px)/.6 var(--script);color:var(--gold);display:block;width:max-content;margin:6px auto 2px;padding:.12em .35em .18em;text-shadow:0 2px 20px #000;
+.hero .amp{font:400 clamp(50px,14vw,84px)/.6 var(--script);color:var(--gold-s);display:block;width:max-content;margin:6px auto 2px;padding:.12em .35em .18em;text-shadow:0 1px 14px #fdf7f4;
   clip-path:inset(0 100% 0 0);transition:clip-path 1.2s var(--ease-io) .55s}
 .hero.play .amp{clip-path:inset(0 0 0 0)}
-.hero-eb{color:var(--gold-l);margin-bottom:20px;font-size:clamp(11px,3vw,13px);opacity:0;transform:translateY(8px);transition:opacity .8s var(--ease-out) .25s,transform .8s var(--ease-out) .25s}
+.hero-eb{color:var(--gold-t);margin-bottom:20px;font-size:clamp(11px,3vw,13px);opacity:0;transform:translateY(8px);transition:opacity .8s var(--ease-out) .25s,transform .8s var(--ease-out) .25s}
 .hero.play .hero-eb{opacity:1;transform:none}
-.hero .lead{font:italic 400 clamp(16px,4.3vw,19px)/1.6 var(--serif);color:#efe3d1;margin:0 auto;max-width:400px}
+.hero .lead{font:italic 400 clamp(16px,4.3vw,19px)/1.6 var(--serif);color:var(--ink);margin:0 auto;max-width:400px}
 .hero-cta{margin-top:26px;min-width:160px;white-space:nowrap}
 @media (max-width:359px){.hero-cta{letter-spacing:.16em;padding:13px 18px}}
-.badge{position:absolute;z-index:2;right:max(4%,14px);bottom:80px;width:clamp(72px,19vw,104px);color:var(--gold);animation:float 7s ease-in-out infinite;pointer-events:none}
+.badge{position:absolute;z-index:2;right:max(4%,14px);bottom:80px;width:clamp(72px,19vw,104px);color:var(--gold-s);animation:float 7s ease-in-out infinite;pointer-events:none}
 @media (max-height:740px){.badge{display:none}}
 @keyframes float{50%{transform:translateY(-8px) rotate(-3deg)}}
 .par{position:absolute;inset:0;z-index:0;pointer-events:none}
 
 /* ---------- interactive map ---------- */
 .map{position:relative;width:100%;height:clamp(200px,54vw,260px);margin:24px auto 0;border:1px solid var(--gold);border-radius:2px;overflow:hidden;
-  background:var(--cream2);box-shadow:0 0 0 4px #fbf6ec,0 0 0 5px #c9a66b55}
+  background:var(--blush-bg);box-shadow:0 0 0 4px var(--ivory),0 0 0 5px #b08a5555}
 .map::before{content:"";position:absolute;inset:0;background:linear-gradient(100deg,transparent 30%,#ffffff8c 50%,transparent 70%) 0 0/250% 100%;animation:shimmer 1.4s linear infinite;transition:opacity .4s ease}
 .map.loaded::before{opacity:0;animation:none}
 @keyframes shimmer{from{background-position:150% 0}to{background-position:-100% 0}}
@@ -127,34 +126,39 @@ img,svg{display:block}
 .map.loaded iframe{opacity:1}
 .map.on iframe{filter:none;pointer-events:auto}
 .map-veil{position:absolute;inset:0;z-index:1;display:flex;align-items:flex-end;justify-content:center;padding:14px;border:0;margin:0;
-  background:linear-gradient(180deg,transparent 40%,rgba(58,9,19,.5));cursor:pointer;transition:opacity .25s ease}
-.map-veil span{background:var(--w800);color:var(--gold-l);font:600 11px var(--serif);letter-spacing:.22em;text-transform:uppercase;padding:9px 14px;border-radius:2px;
-  border:1px solid #c9a66b88;transition:transform .16s var(--ease-out)}
+  background:linear-gradient(180deg,transparent 40%,rgba(122,46,59,.35));cursor:pointer;transition:opacity .25s ease}
+.map-veil span{background:var(--rose);color:var(--ivory);font:600 11px var(--serif);letter-spacing:.22em;text-transform:uppercase;padding:9px 14px;border-radius:2px;
+  border:1px solid #f6d3cf88;transition:transform .16s var(--ease-out)}
 .map-veil:active span{transform:scale(.97)}
-.map-veil:focus-visible{outline:2px solid var(--gold);outline-offset:-4px}
+.map-veil:focus-visible{outline:2px solid var(--rose);outline-offset:-4px}
 .map.on .map-veil{opacity:0;pointer-events:none}
 
 /* ---------- verse read-along ---------- */
 .read .wd{display:inline-block}
 
-/* ---------- cream sections ---------- */
-.cream{background:
-  radial-gradient(ellipse 70% 50% at 20% 0,#fbf6ec 0,transparent 70%),
-  radial-gradient(ellipse 60% 50% at 90% 100%,#ece2cf 0,transparent 70%),
-  var(--cream);padding:64px 24px;overflow:hidden;border-top:1px solid var(--gold);border-bottom:1px solid var(--gold)}
-.cream::before{content:"";position:absolute;inset:7px 0;border-top:1px solid #c9a66b55;border-bottom:1px solid #c9a66b55;pointer-events:none}
-.sprig{position:absolute;z-index:0;color:var(--line);opacity:.75;pointer-events:none;width:clamp(90px,24vw,150px)}
+/* ---------- section surfaces ---------- */
+/* Light theme throughout; the deep rose Ayat band is the single colour-block moment. */
+.ivory,.blush,.deep{padding:68px 24px;overflow:hidden;overflow:clip}
+.ivory{background:radial-gradient(ellipse 70% 50% at 20% 0,#fffaf8 0,transparent 70%),var(--ivory)}
+.blush{background:
+  radial-gradient(ellipse 70% 50% at 20% 0,#fcf4f2 0,transparent 70%),
+  radial-gradient(ellipse 60% 50% at 90% 100%,#f3dfdb 0,transparent 70%),
+  var(--blush-bg);border-top:1px solid #b08a5566;border-bottom:1px solid #b08a5566}
+.blush::before{content:"";position:absolute;inset:7px 0;border-top:1px solid #b08a5533;border-bottom:1px solid #b08a5533;pointer-events:none}
+.deep{background:radial-gradient(ellipse at 50% 30%,#8a3846,var(--rose) 45%,var(--rose-d) 100%);color:var(--ivory)}
+.ivory>.wrap,.blush>.wrap,.deep>.wrap{position:relative;z-index:2;max-width:560px;margin:0 auto}
+.deep .p{color:#f6e8e5}
+.deep .p,.deep .arab,.deep .caps{text-shadow:0 0 10px #5e1f2b,0 1px 2px #5e1f2b80}
+.deep .orn{color:var(--gold-l)}
+.deep .caps{color:var(--gold-l)}
+.sprig{position:absolute;z-index:0;color:var(--sage);opacity:.7;pointer-events:none;width:clamp(90px,24vw,150px)}
 .sprig.l{left:-14px;top:30px}
 .sprig.r{right:-14px;bottom:20px;transform:scaleX(-1)}
-.cream>.wrap{position:relative;z-index:1;max-width:560px;margin:0 auto}
-.cream .title{color:var(--w800)}
-.cream .orn{color:var(--gold-d)}
-.cream .script,.cream .camp{color:var(--gold-d)}
 
 .facts{display:grid;grid-template-columns:repeat(3,1fr);text-align:center}
 .facts>div{padding:2px 6px;display:flex;flex-direction:column;align-items:center;gap:3px}
-.facts>div+div{border-left:1px solid #c9a66b88}
-.facts svg{width:30px;height:30px;color:var(--gold-d);margin-bottom:10px}
+.facts>div+div{border-left:1px solid #b08a5588}
+.facts svg{width:30px;height:30px;color:var(--gold-s);margin-bottom:10px}
 .facts .k{font:500 clamp(10px,2.8vw,12px) var(--serif);letter-spacing:.2em;text-transform:uppercase;color:var(--ink)}
 .facts .big{font:300 clamp(38px,10vw,50px)/1 var(--serif);color:var(--ink);margin:2px 0}
 .facts .place{font:500 clamp(14px,3.8vw,17px)/1.25 var(--serif);letter-spacing:.06em;text-transform:uppercase;margin:6px 0 4px}
@@ -162,85 +166,73 @@ img,svg{display:block}
 
 .cd{display:flex;justify-content:center;margin:34px auto 0;max-width:420px}
 .cd div{flex:1;text-align:center;padding:4px 0;overflow:hidden}
-.cd div+div{border-left:1px solid #c9a66b77}
-.cd b{display:block;font:300 clamp(30px,8vw,40px)/1.05 var(--serif);color:var(--w800);font-variant-numeric:lining-nums tabular-nums}
+.cd div+div{border-left:1px solid #b08a5577}
+.cd b{display:block;font:300 clamp(30px,8vw,40px)/1.05 var(--serif);color:var(--rose);font-variant-numeric:lining-nums tabular-nums}
 .cd span{font:500 10px var(--serif);letter-spacing:.24em;text-transform:uppercase;color:var(--ink2)}
 .cd-label{margin-top:44px;color:var(--ink2);font:italic 400 17px var(--serif)}
 
 .h3{font:500 clamp(15px,4vw,18px) var(--serif);letter-spacing:.3em;text-transform:uppercase;color:var(--ink);margin:46px 0 0}
 .p{font:400 clamp(15px,4vw,17px)/1.65 var(--serif);margin:0}
 
-/* ---------- dark sections ---------- */
-.dark{background:radial-gradient(ellipse at 50% 30%,#3c0b15,#22040b 70%);color:var(--cream);padding:72px 26px;overflow:hidden;overflow:clip}
-.dark>.wrap{position:relative;z-index:2;max-width:560px;margin:0 auto}
-.dark .p{color:#eadfcd}
-/* Page theme is dark; the cream "Acara" band is the single colour-block moment, as in the reference. */
-.dark.alt{background:radial-gradient(ellipse at 50% 0,#34070f,#1f0309 72%)}
-.dark+.dark,.dark+.foot{border-top:1px solid #c9a66b2e}
-.dark .sprig{color:var(--gold);opacity:.2}
-.dark .oval{color:var(--gold)}
-.dark .cname{color:#f6ecdd}
-.dark .cpar,.dark .muted{color:#d9c8b0}
-.dark .btn.link{color:var(--gold-l)}
-.done-t{color:#f6ecdd;font-size:14px}
+.done-t{color:var(--rose);font-size:14px}
 .arab{font:400 clamp(24px,6.6vw,32px)/1.95 Amiri,serif;color:var(--gold-l);direction:rtl;margin:0}
 
 /* ---------- mempelai ---------- */
 .couple{display:flex;flex-direction:column;align-items:center;gap:6px;margin-top:34px}
-.oval{width:84px;height:110px;color:var(--gold-d);margin-bottom:14px;stroke-dasharray:300;stroke-dashoffset:300;transition:opacity .8s var(--ease-out) var(--d,0ms),transform .8s var(--ease-out) var(--d,0ms),filter .8s var(--ease-out) var(--d,0ms),stroke-dashoffset 1.8s var(--ease-io) calc(var(--d,0ms) + 100ms)}
+.oval{width:84px;height:110px;color:var(--gold-s);margin-bottom:14px;stroke-dasharray:300;stroke-dashoffset:300;transition:opacity .8s var(--ease-out) var(--d,0ms),transform .8s var(--ease-out) var(--d,0ms),filter .8s var(--ease-out) var(--d,0ms),stroke-dashoffset 1.8s var(--ease-io) calc(var(--d,0ms) + 100ms)}
 .oval.in{stroke-dashoffset:0}
-.cname{font:500 clamp(22px,6vw,34px)/1.15 var(--serif);color:var(--w800);margin:0;letter-spacing:.01em}
+.cname{font:500 clamp(22px,6vw,34px)/1.15 var(--serif);color:var(--rose);margin:0;letter-spacing:.01em}
 .cpar{font:italic 400 clamp(14.5px,3.9vw,16.5px)/1.55 var(--serif);color:var(--ink2);margin:8px 0 0}
-.camp{font:400 clamp(54px,14vw,70px)/1 var(--script);color:var(--gold);margin:22px 0 14px}
+.camp{font:400 clamp(54px,14vw,70px)/1 var(--script);color:var(--gold-s);margin:22px 0 14px}
 
 /* ---------- timeline ---------- */
 .tl{display:grid;grid-template-columns:1fr 1fr;position:relative;margin-top:44px}
-.tl-line{position:absolute;top:27px;left:25%;right:25%;height:1px;background:linear-gradient(90deg,var(--gold),var(--gold-l),var(--gold));transform:scaleX(0);transform-origin:left;transition:transform 1.2s var(--ease-io) .45s}
+.tl-line{position:absolute;top:27px;left:25%;right:25%;height:1px;background:linear-gradient(90deg,var(--gold),var(--blush-d),var(--gold));transform:scaleX(0);transform-origin:left;transition:transform 1.2s var(--ease-io) .45s}
 .tl.in .tl-line{transform:scaleX(1)}
 .tl .node{display:flex;flex-direction:column;align-items:center;text-align:center;gap:4px;padding:0 6px;opacity:0;transform:translateY(10px);filter:blur(3px);transition:opacity .7s var(--ease-out),transform .7s var(--ease-out),filter .7s var(--ease-out)}
 .tl.in .node{opacity:1;transform:none;filter:none}
 .tl.in .node:nth-of-type(1){transition-delay:.15s}
 .tl.in .node:nth-of-type(2){transition-delay:1.35s}
-.tl .ic{width:56px;height:56px;border-radius:50%;display:grid;place-items:center;background:var(--w900);border:1px solid #c9a66b88;color:var(--gold);position:relative;z-index:1;margin-bottom:12px;box-shadow:0 0 0 6px #2a050c}
+.tl .ic{width:56px;height:56px;border-radius:50%;display:grid;place-items:center;background:var(--ivory);border:1px solid #b08a5588;color:var(--rose);position:relative;z-index:1;margin-bottom:12px;box-shadow:0 0 0 6px var(--blush-bg)}
 .tl .ic svg{width:30px;height:30px}
-.tl .ic .ok{position:absolute;right:-4px;top:-4px;width:20px;height:20px;border-radius:50%;background:var(--gold);color:var(--w900);display:grid;place-items:center;box-shadow:0 0 0 3px #2a050c;transform:scale(.6);opacity:0;transition:transform .5s var(--ease-out) 1s,opacity .3s ease 1s}
+.tl .ic .ok{position:absolute;right:-4px;top:-4px;width:20px;height:20px;border-radius:50%;background:var(--rose);color:var(--ivory);display:grid;place-items:center;box-shadow:0 0 0 3px var(--blush-bg);transform:scale(.6);opacity:0;transition:transform .5s var(--ease-out) 1s,opacity .3s ease 1s}
 .tl .ic .ok svg{width:11px;height:11px}
 .tl.in .ic .ok{transform:none;opacity:1}
-.tl .ic.next::before,.tl .ic.next::after{content:"";position:absolute;inset:-1px;border-radius:50%;border:1px solid var(--gold);opacity:0;pointer-events:none}
+.tl .ic.next::before,.tl .ic.next::after{content:"";position:absolute;inset:-1px;border-radius:50%;border:1px solid var(--blush-d);opacity:0;pointer-events:none}
 .tl.in .ic.next::before{animation:ping 2.8s var(--ease-out) 2s infinite}
 .tl.in .ic.next::after{animation:ping 2.8s var(--ease-out) 2.9s infinite}
 @keyframes ping{0%{transform:scale(1);opacity:.7}100%{transform:scale(1.7);opacity:0}}
-.tl .k{font:600 12px var(--serif);letter-spacing:.26em;text-transform:uppercase;color:var(--gold-l)}
-.tl .v{font:500 clamp(15px,4vw,17px)/1.4 var(--serif);color:#f3e8d6}
-.tl .s{font:400 12px/1.5 var(--serif);letter-spacing:.14em;text-transform:uppercase;color:#d9c8b0}
-.tl .note{font:italic 400 14px var(--serif);color:var(--gold);margin-top:4px}
+.tl .k{font:600 12px var(--serif);letter-spacing:.26em;text-transform:uppercase;color:var(--gold-t)}
+.tl .v{font:500 clamp(15px,4vw,17px)/1.4 var(--serif);color:var(--ink)}
+.tl .s{font:400 12px/1.5 var(--serif);letter-spacing:.14em;text-transform:uppercase;color:var(--ink2)}
+.tl .note{font:italic 400 14px var(--serif);color:var(--gold-t);margin-top:4px}
 
 /* ---------- forms ---------- */
 form{display:flex;flex-direction:column;gap:20px;text-align:left;max-width:420px;margin:30px auto 0}
 .fld{display:flex;flex-direction:column;gap:6px}
 .fld>span{font:600 11px var(--serif);letter-spacing:.24em;text-transform:uppercase;color:var(--ink2)}
-.fld input,.fld textarea{font:400 18px var(--serif);color:var(--ink);background:transparent;border:0;border-bottom:1px solid #9b784288;padding:8px 2px;outline:none;border-radius:0;transition:border-color .25s ease}
-.fld input:focus,.fld textarea:focus{border-bottom-color:var(--w700)}
-.fld textarea{resize:none;height:96px;border:1px solid #c9a66b66;padding:10px 12px}
-.fld .bad{border-color:#a3263b!important}
-.dark .fld .bad{border-color:#f3a7b3!important}
-.fld .err{display:block;font:500 14px/1.4 var(--serif);letter-spacing:.02em;text-transform:none;color:#a3263b}
-.dark .fld .err{color:#f3a7b3}
+.fld input,.fld textarea{font:400 18px var(--serif);color:var(--ink);background:transparent;border:0;border-bottom:1px solid #9a744488;padding:8px 2px;outline:none;border-radius:0;transition:border-color .25s ease}
+.fld input:focus,.fld textarea:focus{border-bottom-color:var(--rose)}
+.fld textarea{resize:none;height:96px;border:1px solid #9a744466;padding:10px 12px;background:#fffaf880}
+.fld textarea:focus{border-color:var(--rose)}
+.fld input::placeholder,.fld textarea::placeholder{color:var(--ink2);opacity:1}
+.fld .bad{border-color:var(--err)!important}
+.fld .err{display:block;font:500 14px/1.4 var(--serif);letter-spacing:.02em;text-transform:none;color:var(--err)}
 .choice-on span+span{border-left:1px solid transparent}
-.choice{position:relative;display:grid;grid-template-columns:1fr 1fr;border:1px solid #9b784299}
+.choice{position:relative;display:grid;grid-template-columns:1fr 1fr;border:1px solid #9a744499}
 .choice input{position:absolute;opacity:0;pointer-events:none}
 .choice span{display:block;text-align:center;padding:12px 0;font:600 12px var(--serif);letter-spacing:.24em;text-transform:uppercase;cursor:pointer;color:var(--ink);transition:transform .16s var(--ease-out)}
 .choice label:active span{transform:scale(.97)}
-.choice label+label span{border-left:1px solid #9b784299}
-.choice input:focus-visible+span{outline:2px solid var(--gold);outline-offset:-4px}
-.choice-on{position:absolute;inset:-1px;display:grid;grid-template-columns:1fr 1fr;background:var(--w800);color:var(--gold-l);pointer-events:none;clip-path:inset(0 50% 0 0);transition:clip-path .32s var(--ease-io)}
-.choice-on span{color:var(--gold-l)}
+.choice label+label span{border-left:1px solid #9a744499}
+.choice input:focus-visible+span{outline:2px solid var(--rose);outline-offset:-4px}
+.choice-on{position:absolute;inset:-1px;display:grid;grid-template-columns:1fr 1fr;background:var(--rose);color:var(--ivory);pointer-events:none;clip-path:inset(0 50% 0 0);transition:clip-path .32s var(--ease-io)}
+.choice-on span{color:var(--ivory)}
 .choice[data-v="1"] .choice-on{clip-path:inset(0 0 0 50%)}
-.step{display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid #9b784288;padding:4px 0 8px}
+.step{display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid #9a744488;padding:4px 0 8px}
 .step .ctrl{display:flex;align-items:center;gap:16px}
-.step button{width:34px;height:34px;border-radius:2px;border:1px solid #9b7842aa;background:transparent;color:var(--w800);font:500 20px var(--serif);cursor:pointer;transition:transform .16s var(--ease-out),background-color .2s ease}
-.step button:active{transform:scale(.9);background-color:#9b78421f}
-.step output{display:inline-block;font:500 24px var(--serif);color:var(--w800);min-width:16px;text-align:center;overflow:hidden}
+.step button{width:34px;height:34px;border-radius:2px;border:1px solid #9a7444aa;background:transparent;color:var(--rose);font:500 20px var(--serif);cursor:pointer;transition:transform .16s var(--ease-out),background-color .2s ease}
+.step button:active{transform:scale(.9);background-color:#f6d3cf99}
+.step output{display:inline-block;font:500 24px var(--serif);color:var(--rose);min-width:16px;text-align:center;overflow:hidden}
 .collapse{display:grid;grid-template-rows:1fr;transition:grid-template-rows .45s var(--ease),opacity .3s}
 .collapse.hide{grid-template-rows:0fr;opacity:0}
 .collapse>div{overflow:hidden}
@@ -253,56 +245,42 @@ form{display:flex;flex-direction:column;gap:20px;text-align:left;max-width:420px
 .check circle{stroke-dasharray:180;stroke-dashoffset:180;animation:draw .8s .1s var(--ease) forwards}
 .check path{stroke-dasharray:44;stroke-dashoffset:44;animation:draw .5s .7s var(--ease) forwards}
 @keyframes draw{to{stroke-dashoffset:0}}
-.dark .fld>span{color:var(--gold-l)}
-.dark .fld input,.dark .fld textarea{color:var(--cream);border-color:#c9a66b66}
-.dark .fld input::placeholder,.dark .fld textarea::placeholder{color:#e7d2a6a8}
-.dark .fld input:focus,.dark .fld textarea:focus{border-color:var(--gold)}
-.dark .choice{border-color:#c9a66b77}
-.dark .choice span{color:#f3e8d6}
-.dark .choice label+label span{border-left-color:#c9a66b77}
-.dark .choice-on{background:var(--gold)}
-.dark .choice-on span{color:var(--w900)}
-.dark .step{border-bottom-color:#c9a66b66}
-.dark .step button{border-color:#c9a66b99;color:var(--gold-l)}
-.dark .step button:active{background-color:#c9a66b26}
-.dark .step output{color:#f6ecdd}
-.dark .count{color:#d9c8b0}
-.count.warn{color:#f0a3ae}
+.count.warn{color:var(--err)}
 .wishes:empty{display:none}
-.empty{display:none;max-width:460px;margin:30px auto 0;font:italic 400 17px/1.5 var(--serif);color:#d9c8b0}
+.empty{display:none;max-width:460px;margin:30px auto 0;font:italic 400 17px/1.5 var(--serif);color:var(--ink2)}
 .wishes:empty+.empty{display:block}
-.wishes{max-width:460px;margin:34px auto 0;display:flex;flex-direction:column;gap:12px;max-height:380px;overflow-y:auto;padding-right:4px;scrollbar-width:thin;scrollbar-color:#c9a66b55 transparent}
-.wish{border:1px solid #c9a66b40;border-left:2px solid var(--gold);background:#ffffff07;padding:14px 16px;text-align:left}
+.wishes{max-width:460px;margin:34px auto 0;display:flex;flex-direction:column;gap:12px;max-height:380px;overflow-y:auto;padding-right:4px;scrollbar-width:thin;scrollbar-color:#b08a5566 transparent}
+.wish{border:1px solid #b08a5540;border-left:2px solid var(--rose);background:#fffaf8b3;padding:14px 16px;text-align:left}
 .wish-slot{overflow:hidden;flex-shrink:0}
-.wish .n{font:600 13px var(--serif);letter-spacing:.2em;text-transform:uppercase;color:var(--gold-l)}
-.wish .m{font:italic 400 16.5px/1.55 var(--serif);color:#efe3d1;margin-top:6px;white-space:pre-wrap;word-break:break-word}
-.wish .tm{font:400 11px var(--serif);letter-spacing:.16em;text-transform:uppercase;color:#bfa98f}
+.wish .n{font:600 13px var(--serif);letter-spacing:.2em;text-transform:uppercase;color:var(--rose)}
+.wish .m{font:italic 400 16.5px/1.55 var(--serif);color:var(--ink);margin-top:6px;white-space:pre-wrap;word-break:break-word}
+.wish .tm{font:400 11px var(--serif);letter-spacing:.16em;text-transform:uppercase;color:var(--ink2)}
 .wf{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-top:10px}
-.amin{appearance:none;display:inline-flex;align-items:center;gap:8px;border:1px solid #c9a66b66;background:transparent;color:var(--gold-l);
+.amin{appearance:none;display:inline-flex;align-items:center;gap:8px;border:1px solid #b08a5588;background:transparent;color:var(--rose);
   font:600 11px var(--serif);letter-spacing:.2em;text-transform:uppercase;padding:6px 10px;border-radius:2px;cursor:pointer;
   transition:background-color .2s ease,color .2s ease,border-color .2s ease,transform .16s var(--ease-out)}
 .amin:active{transform:scale(.95)}
 .amin b{display:inline-block;min-width:1ch;font:600 13px var(--serif);letter-spacing:0}
-.amin[aria-pressed="true"]{background:var(--gold);color:var(--w900);border-color:var(--gold)}
-@media (hover:hover) and (pointer:fine){.amin:hover{border-color:var(--gold)}}
+.amin[aria-pressed="true"]{background:var(--rose);color:var(--ivory);border-color:var(--rose)}
+@media (hover:hover) and (pointer:fine){.amin:hover{border-color:var(--rose)}}
 .chips{display:flex;gap:8px;overflow-x:auto;scroll-snap-type:x mandatory;padding:2px 1px 6px;scrollbar-width:none;-webkit-mask:linear-gradient(90deg,#000 88%,transparent);mask:linear-gradient(90deg,#000 88%,transparent)}
 .chips::-webkit-scrollbar{display:none}
-.chip{flex:0 0 auto;scroll-snap-align:start;appearance:none;border:1px solid #c9a66b66;background:transparent;color:var(--gold-l);
+.chip{flex:0 0 auto;scroll-snap-align:start;appearance:none;border:1px solid #b08a5588;background:transparent;color:var(--rose);
   font:italic 500 15px var(--serif);padding:8px 14px;border-radius:2px;cursor:pointer;
   transition:background-color .2s ease,color .2s ease,border-color .2s ease,transform .16s var(--ease-out)}
 .chip:active{transform:scale(.96)}
-.chip[aria-pressed="true"]{background:var(--gold);color:var(--w900);border-color:var(--gold)}
-.chip:focus-visible,.amin:focus-visible{outline:2px solid var(--gold);outline-offset:2px}
+.chip[aria-pressed="true"]{background:var(--rose);color:var(--ivory);border-color:var(--rose)}
+.chip:focus-visible,.amin:focus-visible{outline:2px solid var(--rose);outline-offset:2px}
 
 /* ---------- footer ---------- */
-.foot{background:linear-gradient(180deg,#1f040a,var(--w950));color:var(--cream);padding:70px 26px 40px;text-align:center;border-top:1px solid #c9a66b66;overflow:hidden}
+.foot{position:relative;background:linear-gradient(180deg,var(--ivory),#eef2ea);color:var(--ink);padding:70px 26px 40px;text-align:center;overflow:hidden}
 .foot .wrap{position:relative;z-index:2;max-width:520px;margin:0 auto}
-.foot .salam{font:400 clamp(28px,7.6vw,38px)/1.25 var(--script);color:var(--gold);margin:30px 0 8px}
-.foot .host{font:500 clamp(19px,5vw,23px)/1.45 var(--serif);color:#f6ecdd;margin:10px 0 0}
-.foot .tiny{margin-top:46px;color:#c9a66bcc;font-size:10.5px}
+.foot .salam{font:400 clamp(28px,7.6vw,38px)/1.25 var(--script);color:var(--gold-s);margin:30px 0 8px}
+.foot .host{font:500 clamp(19px,5vw,23px)/1.45 var(--serif);color:var(--rose);margin:10px 0 0}
+.foot .tiny{margin-top:46px;color:var(--gold-t);font-size:10.5px}
 
 /* ---------- floating ---------- */
-.music{position:fixed;z-index:40;right:max(14px,calc(50vw - 366px));bottom:18px;width:44px;height:44px;border-radius:2px;border:1px solid var(--gold);background:var(--w900);color:var(--gold-l);display:grid;place-items:center;cursor:pointer;box-shadow:0 8px 20px #000a;opacity:0;transform:scale(.8);transition:opacity .4s var(--ease-out),transform .4s var(--ease-out);pointer-events:none}
+.music{position:fixed;z-index:40;right:max(14px,calc(50vw - 366px));bottom:18px;width:44px;height:44px;border-radius:2px;border:1px solid var(--gold);background:var(--ivory);color:var(--rose);display:grid;place-items:center;cursor:pointer;box-shadow:0 8px 20px #7a2e3b33;opacity:0;transform:scale(.8);transition:opacity .4s var(--ease-out),transform .4s var(--ease-out);pointer-events:none}
 .opened .music{opacity:1;transform:none;pointer-events:auto}
 .opened .music:active{transform:scale(.92);transition-duration:.12s}
 .eq{display:flex;align-items:flex-end;gap:2.5px;height:14px}
@@ -313,19 +291,19 @@ form{display:flex;flex-direction:column;gap:20px;text-align:left;max-width:420px
 .music.play .eq i:nth-child(4){animation-duration:.95s;animation-delay:-.2s}
 @keyframes eq{0%,100%{transform:scaleY(.25)}50%{transform:scaleY(1)}}
 @keyframes spin{to{transform:rotate(360deg)}}
-.toast{position:fixed;z-index:60;left:50%;bottom:78px;transform:translate(-50%,16px);opacity:0;background:var(--w900);color:var(--gold-l);border:1px solid #c9a66b88;font:500 14px var(--serif);letter-spacing:.06em;padding:10px 18px;white-space:nowrap;transition:opacity .4s ease,transform .4s ease;pointer-events:none}
+.toast{position:fixed;z-index:60;left:50%;bottom:78px;transform:translate(-50%,16px);opacity:0;background:var(--rose);color:var(--ivory);border:1px solid #b08a5588;font:500 14px var(--serif);letter-spacing:.06em;padding:10px 18px;white-space:nowrap;transition:opacity .4s ease,transform .4s ease;pointer-events:none}
 .toast.show{opacity:1;transform:translate(-50%,0)}
-.sheet-bg{position:fixed;inset:0;z-index:50;background:#0d0103aa;opacity:0;pointer-events:none;transition:opacity .3s ease}
-.sheet{position:fixed;z-index:51;left:50%;bottom:0;width:min(760px,100%);transform:translate(-50%,105%);background:var(--cream);border-top:1px solid var(--gold);padding:10px 24px 30px;display:flex;flex-direction:column;gap:12px;transition:transform .3s var(--ease-drawer),visibility 0s linear .3s;touch-action:none;visibility:hidden}
+.sheet-bg{position:fixed;inset:0;z-index:50;background:#5e1f2b8c;opacity:0;pointer-events:none;transition:opacity .3s ease}
+.sheet{position:fixed;z-index:51;left:50%;bottom:0;width:min(760px,100%);transform:translate(-50%,105%);background:var(--ivory);border-top:1px solid var(--gold);padding:10px 24px 30px;display:flex;flex-direction:column;gap:12px;transition:transform .3s var(--ease-drawer),visibility 0s linear .3s;touch-action:none;visibility:hidden}
 .sheet.show{transform:translate(-50%,0);transition:transform .48s var(--ease-drawer),visibility 0s;visibility:visible}
 .sheet h4,.grip{-webkit-user-select:none;user-select:none}
 .sheet.dragging{transition:none;-webkit-user-select:none;user-select:none}
 .sheet-bg.show{opacity:1;pointer-events:auto}
-.grip{width:40px;height:4px;border-radius:2px;background:#9b784266;margin:0 auto 10px;cursor:grab}
+.grip{width:40px;height:4px;border-radius:2px;background:#b08a5566;margin:0 auto 10px;cursor:grab}
 .sheet h4{margin:0 0 6px;text-align:center;font:600 12px var(--serif);letter-spacing:.3em;text-transform:uppercase;color:var(--ink)}
-.burst{position:fixed;z-index:70;width:10px;height:8px;border-radius:80% 10% 80% 20%;background:radial-gradient(circle at 30% 30%,#c44a60,#6a0e20 70%);pointer-events:none}
+.burst{position:fixed;z-index:70;width:10px;height:8px;border-radius:80% 10% 80% 20%;background:radial-gradient(circle at 30% 30%,#f6d3cf,#d07c89 70%);pointer-events:none}
 .petal{position:fixed;top:-20px;z-index:35;pointer-events:none;width:var(--s);height:calc(var(--s)*.85);border-radius:80% 10% 80% 20%;
-  background:radial-gradient(circle at 30% 30%,#b83a50,#6a0e20 70%);box-shadow:inset -2px -2px 4px #0005;opacity:.85;animation:fall var(--t) linear forwards}
+  background:radial-gradient(circle at 30% 30%,#fbe2df,#d98f9b 70%);box-shadow:inset -2px -2px 4px #7a2e3b26;opacity:.85;animation:fall var(--t) linear forwards}
 @keyframes fall{
   25%{transform:translate(var(--x1),25vh) rotate(80deg)}
   50%{transform:translate(var(--x2),50vh) rotate(170deg)}
@@ -336,25 +314,26 @@ form{display:flex;flex-direction:column;gap:20px;text-align:left;max-width:420px
 .gate{position:fixed;inset:0;z-index:80;perspective:1600px}
 .gate.gone{display:none}
 .face{position:absolute;inset:0;overflow:hidden;display:flex;align-items:center;justify-content:center;padding:40px 26px;
-  background:radial-gradient(ellipse at 50% 42%,#40101a 0%,#240409 58%,#150206 100%);color:var(--cream);
+  background:radial-gradient(ellipse at 50% 42%,#fffaf7 0%,var(--ivory) 55%,#f6e2de 100%);color:var(--ink);
   transition:transform 1.5s var(--ease-out),opacity 1.2s ease}
 .face.l{clip-path:inset(0 50% 0 0);transform-origin:left center}
 .face.r{clip-path:inset(0 0 0 50%);transform-origin:right center}
 .gate.open .face.l{transform:translateX(-18%) rotateY(62deg);opacity:0}
 .gate.open .face.r{transform:translateX(18%) rotateY(-62deg);opacity:0}
 .gate.open{pointer-events:none}
-.seam{position:absolute;top:0;bottom:0;left:50%;width:1px;z-index:3;pointer-events:none;background:linear-gradient(transparent 10%,#c9a66b55 30%,transparent 45%,transparent 75%,#c9a66b55 88%,transparent);transition:opacity .5s}
+.seam{position:absolute;top:0;bottom:0;left:50%;width:1px;z-index:3;pointer-events:none;background:linear-gradient(transparent 10%,#b08a5555 30%,transparent 45%,transparent 75%,#b08a5555 88%,transparent);transition:opacity .5s}
 .gate.open .seam{opacity:0}
 .face .box{position:relative;z-index:2;text-align:center;max-width:460px;width:100%}
-.face .frame{position:absolute;inset:16px;border:1px solid #c9a66b66;z-index:1;pointer-events:none}
-.face .frame::after{content:"";position:absolute;inset:6px;border:1px solid #c9a66b2a}
-.face .mono{width:70px;height:92px;margin:0 auto 18px;color:var(--gold)}
-.face .n{font:400 clamp(44px,12.5vw,72px)/.95 var(--serif);letter-spacing:.06em;color:#f6ecdd;margin:6px 0 0}
-.face .a{font:400 clamp(42px,11vw,62px)/.6 var(--script);color:var(--gold);display:block;margin:4px 0}
-.face .guest{margin-top:30px;font:italic 400 16px var(--serif);color:#e7d2a6cc}
-.face .guest b{display:block;font:500 21px var(--serif);font-style:normal;letter-spacing:.06em;color:#f6ecdd;margin-top:4px}
-.face .btn{margin-top:26px;background:var(--w800);border-color:var(--gold);color:var(--gold-l);animation:glow 2.6s ease-in-out infinite}
-@keyframes glow{50%{box-shadow:0 0 0 4px #c9a66b22,0 0 30px #c9a66b55}}
+.face .frame{position:absolute;inset:16px;border:1px solid #b08a5566;z-index:1;pointer-events:none}
+.face .frame::after{content:"";position:absolute;inset:6px;border:1px solid #b08a552a}
+.face .mono{width:70px;height:92px;margin:0 auto 18px;color:var(--gold-s)}
+.face .n{font:400 clamp(44px,12.5vw,72px)/.95 var(--serif);letter-spacing:.06em;color:var(--rose);margin:6px 0 0}
+.face .a{font:400 clamp(42px,11vw,62px)/.6 var(--script);color:var(--gold-s);display:block;margin:4px 0}
+.face .guest{margin-top:30px;font:italic 400 16px var(--serif);color:var(--ink2)}
+.face .guest b{display:block;font:500 21px var(--serif);font-style:normal;letter-spacing:.06em;color:var(--rose);margin-top:4px}
+.face .btn{margin-top:26px;background:var(--rose);border-color:var(--rose);color:var(--ivory);animation:glow 2.6s ease-in-out infinite}
+@keyframes glow{50%{box-shadow:0 0 0 4px #f6d3cfb3,0 0 30px #d07c8966}}
+.face .caps{color:var(--gold-t)}
 .face .box{will-change:translate}
 
 /* Scroll-linked effects run on the compositor via CSS scroll-driven animations; unsupported browsers keep a static page. */
@@ -389,7 +368,7 @@ form{display:flex;flex-direction:column;gap:20px;text-align:left;max-width:420px
   .choice-on{transition:clip-path .01s}
 }
 @media (max-width:380px){
-  .cream,.dark{padding-left:16px;padding-right:16px}
+  .ivory,.blush,.deep{padding-left:16px;padding-right:16px}
   .facts>div{padding:2px 3px}
 }
 </style>
@@ -398,13 +377,13 @@ form{display:flex;flex-direction:column;gap:20px;text-align:left;max-width:420px
 
 <svg width="0" height="0" style="position:absolute" aria-hidden="true">
   <defs>
-    <radialGradient id="rp" cx=".5" cy=".9" r=".9"><stop offset="0" stop-color="#2a040b"/><stop offset=".55" stop-color="#650e1f"/><stop offset=".88" stop-color="#8c1f32"/><stop offset="1" stop-color="#a6364a"/></radialGradient>
-    <radialGradient id="rp2" cx=".5" cy=".9" r=".9"><stop offset="0" stop-color="#36060f"/><stop offset=".6" stop-color="#7e172a"/><stop offset="1" stop-color="#b0465a"/></radialGradient>
-    <radialGradient id="rshade" cx=".5" cy=".5" r=".5"><stop offset=".5" stop-color="#000" stop-opacity="0"/><stop offset="1" stop-color="#0d0003" stop-opacity=".6"/></radialGradient>
-    <linearGradient id="lg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#3a4a32"/><stop offset="1" stop-color="#121a10"/></linearGradient>
+    <radialGradient id="rp" cx=".5" cy=".9" r=".9"><stop offset="0" stop-color="#c46a7a"/><stop offset=".55" stop-color="#e8a9ae"/><stop offset=".88" stop-color="#f6cdca"/><stop offset="1" stop-color="#fde9e6"/></radialGradient>
+    <radialGradient id="rp2" cx=".5" cy=".9" r=".9"><stop offset="0" stop-color="#b25566"/><stop offset=".6" stop-color="#dd8f99"/><stop offset="1" stop-color="#f3c3c3"/></radialGradient>
+    <radialGradient id="rshade" cx=".5" cy=".5" r=".5"><stop offset=".5" stop-color="#7a2e3b" stop-opacity="0"/><stop offset="1" stop-color="#7a2e3b" stop-opacity=".16"/></radialGradient>
+    <linearGradient id="lg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#b3cbae"/><stop offset="1" stop-color="#6f8c6c"/></linearGradient>
     <symbol id="rose" viewBox="-50 -50 100 100">
-      <circle r="44" fill="#23030a"/>
-      <g stroke="#1a0206" stroke-width=".8">
+      <circle r="44" fill="#d98f9b"/>
+      <g stroke="#c98790" stroke-width=".8">
         <ellipse cy="-20" rx="24" ry="27" fill="url(#rp)"/><ellipse cy="-20" rx="24" ry="27" fill="url(#rp)" transform="rotate(60)"/><ellipse cy="-20" rx="24" ry="27" fill="url(#rp)" transform="rotate(120)"/>
         <ellipse cy="-20" rx="24" ry="27" fill="url(#rp)" transform="rotate(180)"/><ellipse cy="-20" rx="24" ry="27" fill="url(#rp)" transform="rotate(240)"/><ellipse cy="-20" rx="24" ry="27" fill="url(#rp)" transform="rotate(300)"/>
         <ellipse cy="-13" rx="17" ry="20" fill="url(#rp)" transform="rotate(36)"/><ellipse cy="-13" rx="17" ry="20" fill="url(#rp)" transform="rotate(108)"/><ellipse cy="-13" rx="17" ry="20" fill="url(#rp)" transform="rotate(180)"/>
@@ -412,10 +391,10 @@ form{display:flex;flex-direction:column;gap:20px;text-align:left;max-width:420px
         <ellipse cy="-7" rx="11" ry="13" fill="url(#rp2)" transform="rotate(10)"/><ellipse cy="-7" rx="11" ry="13" fill="url(#rp2)" transform="rotate(100)"/>
         <ellipse cy="-7" rx="11" ry="13" fill="url(#rp2)" transform="rotate(190)"/><ellipse cy="-7" rx="11" ry="13" fill="url(#rp2)" transform="rotate(280)"/>
       </g>
-      <path d="M-5-2C-6-9 5-10 6-3C7 3-1 6-3 2C-5-1-1-4 2-2" fill="none" stroke="#e98a98" stroke-opacity=".35" stroke-width="1.2"/>
+      <path d="M-5-2C-6-9 5-10 6-3C7 3-1 6-3 2C-5-1-1-4 2-2" fill="none" stroke="#fdeeec" stroke-opacity=".6" stroke-width="1.2"/>
       <circle r="46" fill="url(#rshade)"/>
     </symbol>
-    <symbol id="rleaf" viewBox="0 -20 100 40"><path d="M0 0C20-18 62-22 100 0C62 14 22 14 0 0Z" fill="url(#lg)"/><path d="M4 0C36-3 66-3 94 0" stroke="#4f6146" stroke-width=".9" fill="none"/></symbol>
+    <symbol id="rleaf" viewBox="0 -20 100 40"><path d="M0 0C20-18 62-22 100 0C62 14 22 14 0 0Z" fill="url(#lg)"/><path d="M4 0C36-3 66-3 94 0" stroke="#5e7d5b" stroke-width=".9" fill="none"/></symbol>
     <symbol id="roses" viewBox="0 0 300 300">
       <use href="#rleaf" x="0" y="-20" width="150" height="60" transform="translate(150 150) rotate(200)"/>
       <use href="#rleaf" x="0" y="-20" width="140" height="56" transform="translate(150 150) rotate(-60)"/>
@@ -425,8 +404,8 @@ form{display:flex;flex-direction:column;gap:20px;text-align:left;max-width:420px
       <use href="#rose" x="58" y="48" width="140" height="140"/>
       <use href="#rose" x="150" y="128" width="112" height="112"/>
       <use href="#rose" x="40" y="168" width="84" height="84"/>
-      <g fill="#4a0915" stroke="#1a0206" stroke-width=".6"><ellipse cx="238" cy="70" rx="11" ry="15" transform="rotate(30 238 70)"/><ellipse cx="216" cy="44" rx="8" ry="11" transform="rotate(15 216 44)"/></g>
-      <g fill="#5d0f1f"><circle cx="30" cy="120" r="3.5"/><circle cx="22" cy="132" r="3"/><circle cx="36" cy="138" r="2.6"/><circle cx="262" cy="232" r="3.5"/><circle cx="272" cy="220" r="3"/><circle cx="120" cy="270" r="3"/></g>
+      <g fill="#e8a9ae" stroke="#c98790" stroke-width=".6"><ellipse cx="238" cy="70" rx="11" ry="15" transform="rotate(30 238 70)"/><ellipse cx="216" cy="44" rx="8" ry="11" transform="rotate(15 216 44)"/></g>
+      <g fill="#d07c89"><circle cx="30" cy="120" r="3.5"/><circle cx="22" cy="132" r="3"/><circle cx="36" cy="138" r="2.6"/><circle cx="262" cy="232" r="3.5"/><circle cx="272" cy="220" r="3"/><circle cx="120" cy="270" r="3"/></g>
     </symbol>
     <symbol id="lf" viewBox="-20 -20 40 40"><g fill="none" stroke="currentColor" stroke-width=".9"><ellipse cy="-9" rx="5.5" ry="9"/><ellipse cy="-9" rx="5.5" ry="9" transform="rotate(72)"/><ellipse cy="-9" rx="5.5" ry="9" transform="rotate(144)"/><ellipse cy="-9" rx="5.5" ry="9" transform="rotate(216)"/><ellipse cy="-9" rx="5.5" ry="9" transform="rotate(288)"/><circle r="3"/><path d="M0-3V-12M3 -1L10-6M-3-1L-10-6"/></g></symbol>
     <symbol id="ll" viewBox="0 -8 40 16"><path d="M0 0C10-8 28-8 40 0C28 8 10 8 0 0ZM3 0H35" fill="none" stroke="currentColor" stroke-width=".9"/></symbol>
@@ -458,7 +437,7 @@ form{display:flex;flex-direction:column;gap:20px;text-align:left;max-width:420px
     <symbol id="ovalF" viewBox="0 0 84 110"><ellipse cx="42" cy="55" rx="38" ry="51" fill="none" stroke="currentColor" stroke-width="1.1"/><ellipse cx="42" cy="55" rx="33" ry="46" fill="none" stroke="currentColor" stroke-width=".6" opacity=".55"/><text x="42" y="68" text-anchor="middle" font-family="Pinyon Script" font-size="44" fill="currentColor">F</text><use href="#lf" x="32" y="90" width="20" height="20"/></symbol>
     <symbol id="ovalN" viewBox="0 0 84 110"><ellipse cx="42" cy="55" rx="38" ry="51" fill="none" stroke="currentColor" stroke-width="1.1"/><ellipse cx="42" cy="55" rx="33" ry="46" fill="none" stroke="currentColor" stroke-width=".6" opacity=".55"/><text x="42" y="68" text-anchor="middle" font-family="Pinyon Script" font-size="44" fill="currentColor">N</text><use href="#lf" x="32" y="90" width="20" height="20"/></symbol>
     <symbol id="badge" viewBox="0 0 120 170">
-      <ellipse cx="60" cy="85" rx="54" ry="80" fill="#1a030780" stroke="currentColor" stroke-width="1.1"/>
+      <ellipse cx="60" cy="85" rx="54" ry="80" fill="#fdf7f4cc" stroke="currentColor" stroke-width="1.1"/>
       <ellipse cx="60" cy="85" rx="48" ry="73" fill="none" stroke="currentColor" stroke-width=".6" opacity=".6"/>
       <path id="arcTop" d="M24 66A38 52 0 0 1 96 66" fill="none"/>
       <text font-family="Cormorant Garamond" font-size="10.5" letter-spacing="3" fill="currentColor"><textPath href="#arcTop" startOffset="50%" text-anchor="middle">BARAKALLAH</textPath></text>
@@ -481,16 +460,16 @@ form{display:flex;flex-direction:column;gap:20px;text-align:left;max-width:420px
   <div class="face l" id="faceL">
     <svg class="cl" style="top:-70px;left:-90px;width:clamp(200px,56vw,330px)" viewBox="0 0 300 300"><use href="#roses"/></svg>
     <svg class="cl" style="top:-50px;right:-100px;width:clamp(190px,52vw,310px);transform:rotate(150deg)" viewBox="0 0 300 300"><use href="#roses"/></svg>
-    <svg class="cl" style="bottom:-80px;left:-110px;width:clamp(200px,56vw,320px);transform:rotate(-60deg);filter:brightness(.75)" viewBox="0 0 300 300"><use href="#roses"/></svg>
+    <svg class="cl" style="bottom:-80px;left:-110px;width:clamp(200px,56vw,320px);transform:rotate(-60deg);opacity:.75" viewBox="0 0 300 300"><use href="#roses"/></svg>
     <svg class="cl" style="bottom:-90px;right:-90px;width:clamp(210px,58vw,340px);transform:rotate(80deg)" viewBox="0 0 300 300"><use href="#roses"/></svg>
     <div class="vig"></div>
     <div class="frame"></div>
     <div class="box">
       <svg class="mono"><use href="#ovalMono"/></svg>
-      <div class="caps" style="color:var(--gold-l)">Undangan Resepsi Pernikahan</div>
+      <div class="caps">Undangan Resepsi Pernikahan</div>
       <svg class="orn"><use href="#orn"/></svg>
       <p class="n">FAKHRIY</p><span class="a">dan</span><p class="n">NISA</p>
-      <div class="caps" style="margin-top:22px;color:var(--gold-l)">Sabtu · 16 Januari 2027</div>
+      <div class="caps" style="margin-top:22px">Sabtu · 16 Januari 2027</div>
       <p class="guest">Kepada Yth.<b class="guest-name">Bapak/Ibu/Saudara/i</b></p>
       <button class="btn open-btn" type="button">Buka Undangan</button>
     </div>
@@ -511,10 +490,10 @@ form{display:flex;flex-direction:column;gap:20px;text-align:left;max-width:420px
   <!-- ===== HERO ===== -->
   <section class="hero" id="beranda" data-section>
     <div class="par far">
-      <svg class="cl" style="top:28%;left:-170px;width:clamp(250px,68vw,390px);transform:rotate(-30deg);filter:blur(1.5px) brightness(.55)" viewBox="0 0 300 300"><use href="#roses"/></svg>
-      <svg class="cl" style="top:36%;right:-160px;width:clamp(250px,68vw,390px);transform:rotate(100deg);filter:blur(1.5px) brightness(.6)" viewBox="0 0 300 300"><use href="#roses"/></svg>
-      <svg class="cl" style="bottom:-90px;left:-80px;width:clamp(250px,72vw,400px);transform:rotate(-70deg);filter:brightness(.8)" viewBox="0 0 300 300"><use href="#roses"/></svg>
-      <svg class="cl" style="bottom:-110px;right:-70px;width:clamp(240px,68vw,380px);transform:rotate(60deg);filter:brightness(.85)" viewBox="0 0 300 300"><use href="#roses"/></svg>
+      <svg class="cl" style="top:28%;left:-170px;width:clamp(250px,68vw,390px);transform:rotate(-30deg);filter:blur(1.5px);opacity:.55" viewBox="0 0 300 300"><use href="#roses"/></svg>
+      <svg class="cl" style="top:36%;right:-160px;width:clamp(250px,68vw,390px);transform:rotate(100deg);filter:blur(1.5px);opacity:.6" viewBox="0 0 300 300"><use href="#roses"/></svg>
+      <svg class="cl" style="bottom:-90px;left:-80px;width:clamp(250px,72vw,400px);transform:rotate(-70deg);opacity:.8" viewBox="0 0 300 300"><use href="#roses"/></svg>
+      <svg class="cl" style="bottom:-110px;right:-70px;width:clamp(240px,68vw,380px);transform:rotate(60deg);opacity:.85" viewBox="0 0 300 300"><use href="#roses"/></svg>
     </div>
     <div class="par near">
       <svg class="cl" style="top:-70px;left:-70px;width:clamp(250px,72vw,400px)" viewBox="0 0 300 300"><use href="#roses"/></svg>
@@ -526,13 +505,13 @@ form{display:flex;flex-direction:column;gap:20px;text-align:left;max-width:420px
       <h1 class="names" aria-label="Fakhriy dan Nisa"><span class="w" data-split aria-hidden="true">FAKHRIY</span><span class="amp" aria-hidden="true">dan</span><span class="w" data-split aria-hidden="true">NISA</span></h1>
       <svg class="orn rv"><use href="#orn"/></svg>
       <p class="lead rv">Dengan memohon rahmat dan ridha Allah SWT, kami mengundang Bapak/Ibu/Saudara/i untuk menghadiri resepsi pernikahan putra-putri kami.</p>
-      <a class="btn solid hero-cta rv" href="#rsvp">Konfirmasi Kehadiran</a>
+      <a class="btn hero-cta rv" href="#rsvp">Konfirmasi Kehadiran</a>
     </div>
     <svg class="badge" viewBox="0 0 120 170" aria-hidden="true"><use href="#badge"/></svg>
   </section>
 
   <!-- ===== ACARA (details band) ===== -->
-  <section class="cream" id="acara" data-section>
+  <section class="blush" id="acara" data-section>
     <svg class="sprig l" viewBox="0 0 160 420" aria-hidden="true"><use href="#sprig"/></svg>
     <svg class="sprig r" viewBox="0 0 160 420" aria-hidden="true"><use href="#sprig"/></svg>
     <div class="wrap">
@@ -549,7 +528,7 @@ form{display:flex;flex-direction:column;gap:20px;text-align:left;max-width:420px
       </div>
 
       <h3 class="h3 center rv">Tempat Perayaan</h3>
-      <svg class="orn rv" style="color:var(--gold-d)"><use href="#orn"/></svg>
+      <svg class="orn rv"><use href="#orn"/></svg>
       <p class="p center rv">Gedung Haji Bate<br>Jl. Tumanurung Raya No. 3, Sungguminasa - Gowa</p>
       <div class="map rv" id="map">
         <iframe title="Peta lokasi Gedung Haji Bate" tabindex="-1" referrerpolicy="no-referrer-when-downgrade"></iframe>
@@ -564,19 +543,19 @@ form{display:flex;flex-direction:column;gap:20px;text-align:left;max-width:420px
   </section>
 
   <!-- ===== AYAT ===== -->
-  <section class="dark" id="ayat" data-section>
-    <svg class="cl" style="top:-80px;left:-120px;width:clamp(220px,58vw,310px);transform:rotate(20deg);filter:brightness(.75)" viewBox="0 0 300 300"><use href="#roses"/></svg>
-    <svg class="cl" style="bottom:-90px;right:-120px;width:clamp(220px,58vw,310px);transform:rotate(200deg);filter:brightness(.75)" viewBox="0 0 300 300"><use href="#roses"/></svg>
+  <section class="deep" id="ayat" data-section>
+    <svg class="cl" style="top:-100px;left:-140px;width:clamp(220px,58vw,310px);transform:rotate(20deg);opacity:.75" viewBox="0 0 300 300"><use href="#roses"/></svg>
+    <svg class="cl" style="bottom:-120px;right:-140px;width:clamp(220px,58vw,310px);transform:rotate(200deg);opacity:.75" viewBox="0 0 300 300"><use href="#roses"/></svg>
     <div class="wrap center">
       <p class="arab rv">وَمِنْ آيَاتِهِ أَنْ خَلَقَ لَكُمْ مِنْ أَنْفُسِكُمْ أَزْوَاجًا لِتَسْكُنُوا إِلَيْهَا وَجَعَلَ بَيْنَكُمْ مَوَدَّةً وَرَحْمَةً</p>
       <svg class="orn rv"><use href="#orn"/></svg>
       <p class="p it rv read" data-read style="font-size:clamp(16px,4.3vw,19px)">“Dan di antara tanda-tanda (kebesaran)-Nya ialah Dia menciptakan untukmu pasangan dari jenismu sendiri, agar kamu cenderung dan merasa tenteram kepadanya, dan Dia menjadikan di antaramu rasa kasih dan sayang.”</p>
-      <div class="caps rv" style="margin-top:18px;color:var(--gold)">QS. Ar-Rum [30]: 21</div>
+      <div class="caps rv" style="margin-top:18px">QS. Ar-Rum [30]: 21</div>
     </div>
   </section>
 
   <!-- ===== MEMPELAI ===== -->
-  <section class="cream" id="mempelai" data-section>
+  <section class="ivory" id="mempelai" data-section>
     <svg class="sprig l" viewBox="0 0 160 420" aria-hidden="true" style="top:auto;bottom:40px"><use href="#sprig"/></svg>
     <svg class="sprig r" viewBox="0 0 160 420" aria-hidden="true" style="bottom:auto;top:40px"><use href="#sprig"/></svg>
     <div class="wrap center">
@@ -596,10 +575,10 @@ form{display:flex;flex-direction:column;gap:20px;text-align:left;max-width:420px
   </section>
 
   <!-- ===== RANGKAIAN ACARA ===== -->
-  <section class="dark" id="rangkaian" data-section>
-    <svg class="cl" style="top:10px;left:-150px;width:clamp(230px,62vw,330px);transform:rotate(-20deg);filter:brightness(.85)" viewBox="0 0 300 300"><use href="#roses"/></svg>
-    <svg class="cl" style="top:-50px;right:-140px;width:clamp(230px,62vw,330px);transform:rotate(160deg);filter:brightness(.85)" viewBox="0 0 300 300"><use href="#roses"/></svg>
-    <svg class="cl" style="bottom:-120px;right:-120px;width:clamp(200px,52vw,280px);transform:rotate(240deg);filter:brightness(.6)" viewBox="0 0 300 300"><use href="#roses"/></svg>
+  <section class="blush" id="rangkaian" data-section>
+    <svg class="cl" style="top:10px;left:-150px;width:clamp(230px,62vw,330px);transform:rotate(-20deg);opacity:.85" viewBox="0 0 300 300"><use href="#roses"/></svg>
+    <svg class="cl" style="top:-50px;right:-140px;width:clamp(230px,62vw,330px);transform:rotate(160deg);opacity:.85" viewBox="0 0 300 300"><use href="#roses"/></svg>
+    <svg class="cl" style="bottom:-120px;right:-120px;width:clamp(200px,52vw,280px);transform:rotate(240deg);opacity:.6" viewBox="0 0 300 300"><use href="#roses"/></svg>
     <div class="wrap center">
       <div class="script rv">rangkaian</div>
       <h2 class="title rv">Acara</h2>
@@ -624,7 +603,7 @@ form{display:flex;flex-direction:column;gap:20px;text-align:left;max-width:420px
   </section>
 
   <!-- ===== RSVP ===== -->
-  <section class="dark alt" id="rsvp" data-section>
+  <section class="ivory" id="rsvp" data-section>
     <svg class="sprig l" viewBox="0 0 160 420" aria-hidden="true"><use href="#sprig"/></svg>
     <svg class="sprig r" viewBox="0 0 160 420" aria-hidden="true"><use href="#sprig"/></svg>
     <div class="wrap center">
@@ -644,10 +623,10 @@ form{display:flex;flex-direction:column;gap:20px;text-align:left;max-width:420px
             <div class="ctrl"><button type="button" data-step="-1" aria-label="Kurangi">−</button><output id="jml">1</output><button type="button" data-step="1" aria-label="Tambah">+</button></div>
           </div>
         </div></div>
-        <button class="btn solid" type="submit"><span class="lbl">Kirim Konfirmasi</span></button>
+        <button class="btn" type="submit"><span class="lbl">Kirim Konfirmasi</span></button>
       </form>
       <div class="done" id="rsvpDone">
-        <svg class="check" viewBox="0 0 64 64" aria-hidden="true"><circle cx="32" cy="32" r="29" fill="none" stroke="#C9A66B" stroke-width="1.5"/><path d="M20 33L28 41L45 24" fill="none" stroke="#E7D2A6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        <svg class="check" viewBox="0 0 64 64" aria-hidden="true"><circle cx="32" cy="32" r="29" fill="none" stroke="#B08A55" stroke-width="1.5"/><path d="M20 33L28 41L45 24" fill="none" stroke="#7A2E3B" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
         <div class="caps done-t">Terima kasih</div>
         <p class="p it muted" id="rsvpMsg"></p>
         <button class="btn link" type="button" id="rsvpEdit">Ubah jawaban</button>
@@ -656,9 +635,9 @@ form{display:flex;flex-direction:column;gap:20px;text-align:left;max-width:420px
   </section>
 
   <!-- ===== UCAPAN ===== -->
-  <section class="dark" id="ucapan" data-section>
-    <svg class="cl" style="bottom:-90px;left:-130px;width:clamp(190px,48vw,270px);transform:rotate(-80deg);filter:brightness(.7)" viewBox="0 0 300 300"><use href="#roses"/></svg>
-    <svg class="cl" style="top:-70px;right:-130px;width:clamp(190px,48vw,270px);transform:rotate(170deg);filter:brightness(.7)" viewBox="0 0 300 300"><use href="#roses"/></svg>
+  <section class="blush" id="ucapan" data-section>
+    <svg class="cl" style="bottom:-90px;left:-130px;width:clamp(190px,48vw,270px);transform:rotate(-80deg);opacity:.7" viewBox="0 0 300 300"><use href="#roses"/></svg>
+    <svg class="cl" style="top:-70px;right:-130px;width:clamp(190px,48vw,270px);transform:rotate(170deg);opacity:.7" viewBox="0 0 300 300"><use href="#roses"/></svg>
     <div class="wrap center">
       <h2 class="title rv">Doa Restu</h2>
       <svg class="orn rv"><use href="#orn"/></svg>
@@ -683,17 +662,17 @@ form{display:flex;flex-direction:column;gap:20px;text-align:left;max-width:420px
 
   <!-- ===== PENUTUP ===== -->
   <footer class="foot" id="penutup" data-section>
-    <svg class="cl" style="top:-60px;left:-140px;width:clamp(180px,44vw,250px);transform:rotate(30deg);filter:brightness(.55)" viewBox="0 0 300 300"><use href="#roses"/></svg>
-    <svg class="cl" style="bottom:-80px;right:-130px;width:clamp(180px,44vw,250px);transform:rotate(210deg);filter:brightness(.55)" viewBox="0 0 300 300"><use href="#roses"/></svg>
+    <svg class="cl" style="top:-60px;left:-140px;width:clamp(180px,44vw,250px);transform:rotate(30deg);opacity:.55" viewBox="0 0 300 300"><use href="#roses"/></svg>
+    <svg class="cl" style="bottom:-80px;right:-130px;width:clamp(180px,44vw,250px);transform:rotate(210deg);opacity:.55" viewBox="0 0 300 300"><use href="#roses"/></svg>
     <div class="wrap">
-      <p class="p it rv" style="color:#eadfcd">Merupakan suatu kehormatan dan kebahagiaan bagi kami sekeluarga apabila Bapak/Ibu/Saudara/i berkenan hadir untuk memberikan doa restu kepada kedua mempelai.</p>
+      <p class="p it rv">Merupakan suatu kehormatan dan kebahagiaan bagi kami sekeluarga apabila Bapak/Ibu/Saudara/i berkenan hadir untuk memberikan doa restu kepada kedua mempelai.</p>
       <svg class="orn rv"><use href="#orn"/></svg>
-      <h2 class="title rv" style="font-size:clamp(24px,6.4vw,32px);color:#f6ecdd">Terima Kasih</h2>
-      <p class="p it rv" style="color:#eadfcd;margin-top:16px">Atas doa, perhatian, dan kehadiran Bapak/Ibu/Saudara/i pada resepsi pernikahan putra-putri kami, kami mengucapkan <i>jazākumullāhu khairan</i>.</p>
+      <h2 class="title rv" style="font-size:clamp(24px,6.4vw,32px)">Terima Kasih</h2>
+      <p class="p it rv" style="margin-top:16px">Atas doa, perhatian, dan kehadiran Bapak/Ibu/Saudara/i pada resepsi pernikahan putra-putri kami, kami mengucapkan <i>jazākumullāhu khairan</i>.</p>
       <p class="salam rv">Wassalamu’alaikum Warahmatullahi Wabarakatuh</p>
       <svg class="orn rv"><use href="#orn"/></svg>
-      <div class="caps rv" style="color:var(--gold)">Yang Mengundang</div>
-      <p class="p it rv" style="color:#d9c8b0;margin-top:10px">Keluarga Besar</p>
+      <div class="caps rv" style="color:var(--gold-t)">Yang Mengundang</div>
+      <p class="p it muted rv" style="margin-top:10px">Keluarga Besar</p>
       <p class="host rv">Dr. Ismail Rasulong, S.E., M.M.<br>&amp; Asnawati, S.Pd.</p>
       <div class="btns rv" style="margin-top:30px"><button class="btn gold" type="button" id="shareBtn">Bagikan Undangan</button></div>
       <div class="caps tiny">F &amp; N · 16 . 01 . 2027</div>

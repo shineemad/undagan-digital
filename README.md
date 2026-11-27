@@ -23,6 +23,10 @@ Nama tamu bisa dipersonalisasi lewat parameter URL, misalnya `index.html?to=Nama
 
 Halaman memutar `musik/nasyid-pernikahan.mp3` (Wedding Nasheed, Muhammad Al Muqit) setelah tombol "Buka Undangan" ditekan. Untuk mengganti lagu, timpa file tersebut dengan nama yang sama. Jika file tidak ada atau gagal diputar, undangan tetap berjalan dan tombol musik tampil dalam keadaan berhenti.
 
+## Warna
+
+Tema terang "Blush & Sage": latar gading dan merah muda pucat, judul dan tombol mawar tua, ornamen emas, daun sage. Section Ayat adalah satu-satunya blok berwarna tua. Semua warna diatur lewat variabel CSS di `:root` pada `index.html` (`--ivory`, `--blush-bg`, `--rose`, `--gold`, `--sage`, dan lainnya). Warna mawar SVG ada di gradien `#rp`, `#rp2`, dan `#lg`.
+
 ## Status
 
 Ini masih prototype. Form konfirmasi kehadiran, ucapan, dan tombol Aamiin belum tersimpan ke server; datanya hanya tampil di halaman selama halaman terbuka.
