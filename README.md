@@ -25,11 +25,11 @@ Nama tamu bisa dipersonalisasi lewat parameter URL, misalnya `index.html?to=Nama
 
 Saat tautan undangan dikirim lewat WhatsApp atau aplikasi lain, pratinjaunya memakai `foto/og.jpg` (1200×630): foto mempelai dalam bingkai lengkung, nama "Fakhriy dan Nisa", dan tanggal resepsi. Nama dan tanggal ada di tengah gambar, sehingga tetap terlihat saat WhatsApp memotongnya menjadi persegi. Judul dan keterangan pratinjau diatur di tag `og:title` dan `og:description` pada `index.html`.
 
-Tag `og:url` dan `og:image` memakai alamat lengkap `https://undagan-pernikahan-sable.vercel.app/`. Jika undangan dipindah ke domain lain, ganti alamat di kedua tag tersebut. WhatsApp menyimpan pratinjau lama selama beberapa waktu, jadi perubahan gambar mungkin baru terlihat setelah beberapa jam atau dengan tautan baru (misalnya menambahkan `?to=` nama tamu).
+Tag `og:url`, `og:image`, dan `link rel="canonical"` memakai alamat lengkap `https://undangan-pernikahan-sable.vercel.app/`. Alamat lama `undagan-pernikahan-sable.vercel.app` (tanpa huruf "n") masih bisa dibuka, tetapi Vercel mengalihkannya ke alamat tersebut, jadi bagikan alamat yang memakai "undangan". Jika undangan dipindah ke domain lain, ganti alamat di ketiga tag tersebut. WhatsApp menyimpan pratinjau lama selama beberapa waktu, jadi perubahan gambar mungkin baru terlihat setelah beberapa jam atau dengan tautan baru (misalnya menambahkan `?to=` nama tamu).
 
 ## Musik
 
-Halaman memutar `musik/lagu-pernikahan-kita.mp3` (Lagu Pernikahan Kita, Tiara Andini & Arsy Widianto) setelah tombol "Buka Undangan" ditekan, berulang terus. File ini sudah dipotong di akhir lagu (detik 262,5, tanpa jeda hening) dan dikompres ke MP3 128 kbps (4,2 MB). Untuk mengganti lagu, timpa file tersebut dengan nama yang sama. Jika file tidak ada atau gagal diputar, undangan tetap berjalan dan tombol musik tampil dalam keadaan berhenti.
+Halaman memutar `musik/lagu-pernikahan-kita.mp3` (Lagu Pernikahan Kita, Tiara Andini & Arsy Widianto) setelah tombol "Buka Undangan" ditekan, berulang terus. File baru diunduh saat tombol itu ditekan (`preload="none"`), jadi tamu yang hanya membuka tautan tidak menghabiskan kuota untuk musik. Pada jaringan 4G lambat, musik mulai terdengar kurang dari setengah detik setelah tombol ditekan karena MP3 diputar sambil diunduh. File ini sudah dipotong di akhir lagu (detik 262,5, tanpa jeda hening) dan dikompres ke MP3 128 kbps (4,2 MB). Untuk mengganti lagu, timpa file tersebut dengan nama yang sama. Jika file tidak ada atau gagal diputar, undangan tetap berjalan dan tombol musik tampil dalam keadaan berhenti.
 
 ## Foto
 

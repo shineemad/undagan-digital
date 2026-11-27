@@ -13,8 +13,9 @@
 <meta property="og:site_name" content="Undangan Fakhriy &amp; Nisa">
 <meta property="og:title" content="Undangan Resepsi Pernikahan Fakhriy &amp; Nisa">
 <meta property="og:description" content="Sabtu, 16 Januari 2027, pukul 19.00 WITA di Gedung Haji Bate, Sungguminasa - Gowa.">
-<meta property="og:url" content="https://undagan-pernikahan-sable.vercel.app/">
-<meta property="og:image" content="https://undagan-pernikahan-sable.vercel.app/foto/og.jpg">
+<link rel="canonical" href="https://undangan-pernikahan-sable.vercel.app/">
+<meta property="og:url" content="https://undangan-pernikahan-sable.vercel.app/">
+<meta property="og:image" content="https://undangan-pernikahan-sable.vercel.app/foto/og.jpg">
 <meta property="og:image:type" content="image/jpeg">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
@@ -1033,9 +1034,11 @@ body.lb-open{overflow:hidden}
   }
 
   // Background music: fades in on open, fades out on pause, follows tab visibility.
+  // preload none: the 3 MB file streams only after the guest taps "Buka Undangan", so a guest who only glances at the link spends no data on it.
   const MUSIC_SRC = 'musik/lagu-pernikahan-kita.mp3', MUSIC_VOL = 0.7;
-  const music = $('#music'), audio = new Audio(MUSIC_SRC);
-  audio.loop = true; audio.preload = 'auto'; audio.volume = 0;
+  const music = $('#music'), audio = new Audio();
+  audio.preload = 'none'; audio.src = MUSIC_SRC;
+  audio.loop = true; audio.volume = 0;
   let playing = false, fadeRaf = 0;
   const fadeTo = (target, ms, done) => {
     cancelAnimationFrame(fadeRaf);
