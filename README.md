@@ -22,7 +22,7 @@ Nama tamu bisa dipersonalisasi lewat parameter URL, misalnya `index.html?to=Nama
 
 ## Musik
 
-Halaman memutar `musik/nasyid-pernikahan.mp3` (Wedding Nasheed, Muhammad Al Muqit) setelah tombol "Buka Undangan" ditekan. Untuk mengganti lagu, timpa file tersebut dengan nama yang sama. Jika file tidak ada atau gagal diputar, undangan tetap berjalan dan tombol musik tampil dalam keadaan berhenti.
+Halaman memutar `musik/lagu-pernikahan-kita.mp3` (Lagu Pernikahan Kita, Tiara Andini & Arsy Widianto) setelah tombol "Buka Undangan" ditekan, berulang terus. File ini sudah dipotong di akhir lagu (detik 262,5, tanpa jeda hening) dan dikompres ke MP3 128 kbps (4,2 MB). Untuk mengganti lagu, timpa file tersebut dengan nama yang sama. Jika file tidak ada atau gagal diputar, undangan tetap berjalan dan tombol musik tampil dalam keadaan berhenti.
 
 ## Foto
 
@@ -44,6 +44,6 @@ Ini masih prototype. Form konfirmasi kehadiran, ucapan, dan tombol Aamiin belum 
 
 - Font Cormorant Garamond, Pinyon Script, dan Amiri: SIL Open Font License 1.1. Teks lisensi ada di folder `font/`.
 - Ikon: [Phosphor Icons](https://phosphoricons.com), MIT License, Copyright (c) 2023 Phosphor Icons.
-- Musik: Wedding Nasheed, Muhammad Al Muqit.
+- Musik: Lagu Pernikahan Kita, Tiara Andini & Arsy Widianto.
 - Foto: dokumentasi prewedding mempelai (dari undangan akad di inv.nstory.id).
 - Peta: Google Maps embed.
