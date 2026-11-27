@@ -32,6 +32,10 @@ Section Mempelai memakai `foto/mempelai-fakhriy.webp` dan `foto/mempelai-nisa.we
 
 Tema terang "Blush & Sage": latar gading dan merah muda pucat, judul dan tombol mawar tua, ornamen emas, daun sage. Section Ayat adalah satu-satunya blok berwarna tua. Semua warna diatur lewat variabel CSS di `:root` pada `index.html` (`--ivory`, `--blush-bg`, `--rose`, `--gold`, `--sage`, dan lainnya). Warna mawar SVG ada di gradien `#rp`, `#rp2`, dan `#lg`.
 
+## Tanda Kasih
+
+Section Tanda Kasih (`#hadiah`) menampilkan rekening BCA dan Mandiri setelah tamu menekan "Lihat Rekening". Nomor dan nama pemilik ditulis langsung di `index.html`. Untuk mengganti rekening, ubah teks nomor, atribut `data-copy` (nomor yang disalin), dan `data-bank` pada kartu yang sama.
+
 ## Status
 
 Ini masih prototype. Form konfirmasi kehadiran, ucapan, dan tombol Aamiin belum tersimpan ke server; datanya hanya tampil di halaman selama halaman terbuka.

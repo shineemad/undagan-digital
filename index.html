@@ -276,6 +276,24 @@ form{display:flex;flex-direction:column;gap:20px;text-align:left;max-width:420px
 .chip[aria-pressed="true"]{background:var(--rose);color:var(--ivory);border-color:var(--rose)}
 .chip:focus-visible,.amin:focus-visible{outline:2px solid var(--rose);outline-offset:2px}
 
+/* ---------- tanda kasih ---------- */
+#hadiah .lead{max-width:420px;margin:0 auto}
+@media (max-width:599px){#hadiah .sprig{opacity:.4}}
+.gift-btn{margin-top:26px;min-width:210px}
+.acc-grid{display:grid;gap:14px;padding:28px 0 4px;text-align:left}
+@media (min-width:600px){.acc-grid{grid-template-columns:1fr 1fr}}
+.acc{position:relative;overflow:hidden;background:var(--ivory);border:1px solid #b08a5566;border-radius:2px;padding:22px 20px 18px;box-shadow:0 10px 26px #7a2e3b14;
+  opacity:0;transform:translateY(10px);transition:opacity .5s var(--ease-out),transform .6s var(--ease-out)}
+.acc::before{content:"";position:absolute;inset:5px;border:1px solid #b08a5526;pointer-events:none}
+.acc:nth-child(2){transition-delay:.08s}
+#giftList:not(.hide) .acc{opacity:1;transform:none}
+.acc-orn{position:absolute;right:-12px;top:-12px;width:68px;height:68px;color:var(--sage);opacity:.4;pointer-events:none}
+.acc-bank{display:flex;align-items:center;gap:8px;font:600 11px var(--serif);letter-spacing:.26em;text-transform:uppercase;color:var(--gold-t)}
+.acc-bank svg{width:20px;height:20px;color:var(--gold-s)}
+.acc-no{font:500 clamp(23px,6.4vw,27px)/1.2 var(--serif);letter-spacing:.06em;color:var(--rose);margin:14px 0 2px;font-variant-numeric:lining-nums tabular-nums;-webkit-user-select:all;user-select:all}
+.acc-name{font:italic 400 16px/1.4 var(--serif);color:var(--ink2);margin:0}
+.acc .btn{position:relative;width:100%;margin-top:16px;padding:10px 16px}
+
 /* ---------- galeri ---------- */
 #galeri>.wrap{max-width:680px}
 .g-feat,.g-item{appearance:none;display:block;width:100%;padding:0;border:0;border-radius:2px;overflow:hidden;background:var(--blush-bg);cursor:zoom-in;
@@ -318,6 +336,7 @@ form{display:flex;flex-direction:column;gap:20px;text-align:left;max-width:420px
 body.lb-open{overflow:hidden}
 
 /* ---------- footer ---------- */
+.ivory+.foot{border-top:1px solid #b08a5544}
 .foot{position:relative;background:linear-gradient(180deg,var(--ivory),#eef2ea);color:var(--ink);padding:70px 26px 40px;text-align:center;overflow:hidden}
 .foot .wrap{position:relative;z-index:2;max-width:520px;margin:0 auto}
 .foot .salam{font:400 clamp(28px,7.6vw,38px)/1.25 var(--script);color:var(--gold-s);margin:30px 0 8px}
@@ -408,6 +427,7 @@ body.lb-open{overflow:hidden}
   .orn,.pf .ring{stroke-dasharray:none}
   .pf img{transform:none;transition:opacity .5s ease}
   .g-feat img,.g-item img{transition:none;transform:none!important}
+  .acc{transform:none;transition:opacity .3s ease}
   .face{transition:opacity .6s ease}
   .gate.open .face{transform:none}
   .tl-line{transform:none}
@@ -501,6 +521,8 @@ body.lb-open{overflow:hidden}
     <symbol id="iX" viewBox="0 0 256 256" fill="currentColor"><path d="M204.24,195.76a6,6,0,1,1-8.48,8.48L128,136.49,60.24,204.24a6,6,0,0,1-8.48-8.48L119.51,128,51.76,60.24a6,6,0,0,1,8.48-8.48L128,119.51l67.76-67.75a6,6,0,0,1,8.48,8.48L136.49,128Z"/></symbol>
     <symbol id="iPrev" viewBox="0 0 256 256" fill="currentColor"><path d="M164.24,203.76a6,6,0,1,1-8.48,8.48l-80-80a6,6,0,0,1,0-8.48l80-80a6,6,0,0,1,8.48,8.48L88.49,128Z"/></symbol>
     <symbol id="iNext" viewBox="0 0 256 256" fill="currentColor"><path d="M180.24,132.24l-80,80a6,6,0,0,1-8.48-8.48L167.51,128,91.76,52.24a6,6,0,0,1,8.48-8.48l80,80A6,6,0,0,1,180.24,132.24Z"/></symbol>
+    <symbol id="iBank" viewBox="0 0 256 256" fill="currentColor"><path d="M24,102H50v68H32a6,6,0,0,0,0,12H224a6,6,0,0,0,0-12H206V102h26a6,6,0,0,0,3.14-11.11l-104-64a6,6,0,0,0-6.28,0l-104,64A6,6,0,0,0,24,102Zm38,0H98v68H62Zm84,0v68H110V102Zm48,68H158V102h36ZM128,39l82.8,51H45.2ZM246,208a6,6,0,0,1-6,6H16a6,6,0,0,1,0-12H240A6,6,0,0,1,246,208Z"/></symbol>
+    <symbol id="iCopy" viewBox="0 0 256 256" fill="currentColor"><path d="M216,34H88a6,6,0,0,0-6,6V82H40a6,6,0,0,0-6,6V216a6,6,0,0,0,6,6H168a6,6,0,0,0,6-6V174h42a6,6,0,0,0,6-6V40A6,6,0,0,0,216,34ZM162,210H46V94H162Zm48-48H174V88a6,6,0,0,0-6-6H94V46H210Z"/></symbol>
   </defs>
 </svg>
 
@@ -712,8 +734,39 @@ body.lb-open{overflow:hidden}
     </div>
   </section>
 
+  <!-- ===== TANDA KASIH ===== -->
+  <section class="blush" id="hadiah" data-section>
+    <svg class="sprig l" viewBox="0 0 160 420" aria-hidden="true"><use href="#sprig"/></svg>
+    <svg class="sprig r" viewBox="0 0 160 420" aria-hidden="true"><use href="#sprig"/></svg>
+    <div class="wrap center">
+      <h2 class="title rv">Tanda Kasih</h2>
+      <svg class="orn rv"><use href="#orn"/></svg>
+      <p class="p it muted lead rv">Doa restu Bapak/Ibu/Saudara/i sudah lebih dari cukup bagi kami. Namun bila ingin memberikan tanda kasih, dapat melalui rekening berikut.</p>
+      <button class="btn line gift-btn rv" type="button" id="giftBtn" aria-expanded="false" aria-controls="giftList"><span class="lbl">Lihat Rekening</span></button>
+      <div class="collapse hide" id="giftList"><div>
+        <div class="acc-grid">
+          <article class="acc" aria-labelledby="accBca">
+            <svg class="acc-orn" viewBox="0 0 40 40" aria-hidden="true"><use href="#lf" width="40" height="40"/></svg>
+            <div class="acc-bank" id="accBca"><svg aria-hidden="true"><use href="#iBank"/></svg>Bank BCA</div>
+            <p class="acc-no" id="accBcaNo">7115372122</p>
+            <p class="acc-name">a.n. Khoirunnisa Nova</p>
+            <button class="btn line acc-copy" type="button" data-copy="7115372122" data-bank="BCA" aria-describedby="accBca accBcaNo"><span class="lbl"><svg aria-hidden="true"><use href="#iCopy"/></svg>Salin Nomor</span></button>
+          </article>
+          <article class="acc" aria-labelledby="accMdr">
+            <svg class="acc-orn" viewBox="0 0 40 40" aria-hidden="true"><use href="#lf" width="40" height="40"/></svg>
+            <div class="acc-bank" id="accMdr"><svg aria-hidden="true"><use href="#iBank"/></svg>Bank Mandiri</div>
+            <p class="acc-no" id="accMdrNo">1310023981121</p>
+            <p class="acc-name">a.n. Muhammad Fakhriy Ismail</p>
+            <button class="btn line acc-copy" type="button" data-copy="1310023981121" data-bank="Mandiri" aria-describedby="accMdr accMdrNo"><span class="lbl"><svg aria-hidden="true"><use href="#iCopy"/></svg>Salin Nomor</span></button>
+          </article>
+        </div>
+      </div></div>
+      <p class="sr" id="giftStatus" aria-live="polite"></p>
+    </div>
+  </section>
+
   <!-- ===== UCAPAN ===== -->
-  <section class="blush" id="ucapan" data-section>
+  <section class="ivory" id="ucapan" data-section>
     <svg class="cl" style="bottom:-90px;left:-130px;width:clamp(190px,48vw,270px);transform:rotate(-80deg);opacity:.7" viewBox="0 0 300 300"><use href="#roses"/></svg>
     <svg class="cl" style="top:-70px;right:-130px;width:clamp(190px,48vw,270px);transform:rotate(170deg);opacity:.7" viewBox="0 0 300 300"><use href="#roses"/></svg>
     <div class="wrap center">
@@ -812,6 +865,7 @@ body.lb-open{overflow:hidden}
   const haptic = p => { if (navigator.vibrate) { try { navigator.vibrate(p); } catch {} } };
   const stagger = i => Math.round(60 * i - 3 * i * i);
   const CHECK_SVG = '<svg aria-hidden="true"><use href="#iCheck"/></svg>';
+  const COPY_SVG = '<svg aria-hidden="true"><use href="#iCopy"/></svg>';
   // Crossfade a button label through a short blur so the state change reads as one morph.
   const setLabel = (btn, text, icon) => {
     const lbl = $('.lbl', btn);
@@ -820,6 +874,7 @@ body.lb-open{overflow:hidden}
       lbl.textContent = '';
       if (icon === 'spin') { const s = document.createElement('span'); s.className = 'ld'; s.setAttribute('aria-hidden', 'true'); s.append(document.createElement('i'), document.createElement('i'), document.createElement('i')); lbl.append(s); }
       if (icon === 'check') lbl.insertAdjacentHTML('beforeend', CHECK_SVG);
+      if (icon === 'copy') lbl.insertAdjacentHTML('beforeend', COPY_SVG);
       lbl.append(document.createTextNode(text));
       lbl.classList.remove('out');
     }, reduced ? 0 : 140);
@@ -983,7 +1038,7 @@ body.lb-open{overflow:hidden}
 
   // Nav: one indicator slides between links; a hairline shows reading progress.
   const nav = $('#nav'), links = $$('.nav .grp a'), ind = $('#navInd');
-  const NAV_MAP = { acara: '#acara', ayat: '#acara', mempelai: '#mempelai', galeri: '#mempelai', rangkaian: '#acara', rsvp: '#rsvp', ucapan: '#ucapan' };
+  const NAV_MAP = { acara: '#acara', ayat: '#acara', mempelai: '#mempelai', galeri: '#mempelai', rangkaian: '#acara', rsvp: '#rsvp', hadiah: '#ucapan', ucapan: '#ucapan' };
   let current = null;
   const moveInd = (a, instant) => {
     if (!a) { ind.style.opacity = '0'; return; }
@@ -1085,16 +1140,52 @@ body.lb-open{overflow:hidden}
 
   // Maps, copy, share
   $('#mapsBtn').href = 'https://www.google.com/maps/search/?api=1&query=' + encodeURIComponent(EVENT.venue + ' ' + EVENT.address);
+  // In-app browsers (WhatsApp, Instagram) can block the async clipboard API, so fall back to a selected textarea.
+  const copyText = async text => {
+    try { await navigator.clipboard.writeText(text); return; } catch {}
+    const ta = document.createElement('textarea'), prev = document.activeElement;
+    ta.value = text; ta.setAttribute('readonly', '');
+    ta.style.cssText = 'position:fixed;top:0;left:0;opacity:0;pointer-events:none';
+    document.body.append(ta); ta.select(); ta.setSelectionRange(0, text.length);
+    const ok = document.execCommand('copy');
+    ta.remove(); if (prev) prev.focus({ preventScroll: true });
+    if (!ok) throw new Error('copy failed');
+  };
   const copyBtn = $('#copyBtn');
   let copyTimer;
   copyBtn.addEventListener('click', async () => {
     try {
-      await navigator.clipboard.writeText(EVENT.venue + ', ' + EVENT.address);
+      await copyText(EVENT.venue + ', ' + EVENT.address);
       haptic(8);
       setLabel(copyBtn, 'Alamat tersalin', 'check');
       clearTimeout(copyTimer);
       copyTimer = setTimeout(() => setLabel(copyBtn, 'Salin alamat'), 1800);
     } catch { toast('Gagal menyalin alamat'); }
+  });
+
+  // Gift: accounts stay folded until a guest asks; each number copies with an in-place confirmation.
+  const giftBtn = $('#giftBtn'), giftList = $('#giftList'), giftStatus = $('#giftStatus');
+  giftList.inert = true;
+  giftBtn.addEventListener('click', () => {
+    const open = giftBtn.getAttribute('aria-expanded') !== 'true';
+    giftBtn.setAttribute('aria-expanded', String(open));
+    giftList.classList.toggle('hide', !open);
+    giftList.inert = !open;
+    setLabel(giftBtn, open ? 'Tutup Rekening' : 'Lihat Rekening');
+    if (open) haptic(6);
+  });
+  $$('.acc-copy').forEach(btn => {
+    let timer;
+    btn.addEventListener('click', async () => {
+      try {
+        await copyText(btn.dataset.copy);
+        haptic(8);
+        setLabel(btn, 'Nomor Tersalin', 'check');
+        giftStatus.textContent = `Nomor rekening ${btn.dataset.bank} tersalin`;
+        clearTimeout(timer);
+        timer = setTimeout(() => { setLabel(btn, 'Salin Nomor', 'copy'); giftStatus.textContent = ''; }, 1800);
+      } catch { toast('Gagal menyalin, salin manual'); }
+    });
   });
   $('#shareBtn').addEventListener('click', async () => {
     const text = 'Undangan Resepsi Pernikahan Fakhriy & Nisa, Sabtu 16 Januari 2027 di Gedung Haji Bate.';
