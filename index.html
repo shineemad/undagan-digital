@@ -49,6 +49,16 @@ img,svg{display:block}
 .muted{color:var(--ink2)}
 .rv{opacity:0;transform:translateY(14px);filter:blur(4px);transition:opacity .8s var(--ease-out),transform .8s var(--ease-out),filter .8s var(--ease-out);transition-delay:var(--d,0ms)}
 .rv.in{opacity:1;transform:none;filter:none}
+/* Section titles are split into letters by JS; the letters animate instead of the whole heading. */
+.title .tw{display:inline-block;white-space:nowrap}
+.title .ch{display:inline-block;opacity:0;transform:translateY(.4em);filter:blur(6px);
+  transition:opacity .9s var(--ease-out),transform .9s var(--ease-out),filter .9s var(--ease-out);transition-delay:calc(var(--d,0ms) + var(--cd,0ms))}
+.title.split.rv{opacity:1;transform:none;filter:none}
+.title.split.in .ch{opacity:1;transform:none;filter:none}
+/* Script words write themselves left to right on an inner span (a clip-path on the observed element would hide it from IntersectionObserver). */
+.script.rv,.camp.rv{opacity:1;transform:none;filter:none}
+.script.rv .sw,.camp.rv .sw{display:inline-block;padding:0 .35em .18em;margin-bottom:-.12em;clip-path:inset(0 100% 0 0);transition:clip-path 1.1s var(--ease-io);transition-delay:var(--d,0ms)}
+.script.rv.in .sw,.camp.rv.in .sw{clip-path:inset(0 0 0 0)}
 .orn.rv{transition:opacity .8s var(--ease-out) var(--d,0ms),transform .8s var(--ease-out) var(--d,0ms),filter .8s var(--ease-out) var(--d,0ms),stroke-dashoffset 1.4s var(--ease-io) calc(var(--d,0ms) + 150ms)}
 
 /* ---------- buttons ---------- */
@@ -97,22 +107,29 @@ img,svg{display:block}
 
 /* ---------- hero ---------- */
 .hero{min-height:calc(100svh - 54px);display:flex;align-items:center;justify-content:center;overflow:hidden;
-  background:radial-gradient(ellipse at 50% 40%,#fffaf7 0%,var(--ivory) 55%,#f7e4e0 100%);padding:70px 26px 90px;color:var(--ink)}
+  background:radial-gradient(ellipse at 50% 40%,#fffaf7 0%,var(--ivory) 55%,#f7e4e0 100%);padding:36px 26px 48px;color:var(--ink)}
 .hero .in-wrap{position:relative;z-index:2;text-align:center;max-width:520px}
-.hero .names{font:400 clamp(52px,15vw,96px)/.92 var(--serif);letter-spacing:.05em;margin:0;color:var(--rose);text-shadow:0 1px 18px #fdf7f4}
+.hero .names{font:400 clamp(46px,13.5vw,84px)/.92 var(--serif);letter-spacing:.05em;margin:0;color:var(--rose);text-shadow:0 1px 18px #fdf7f4}
 .hero .names .w{display:block;white-space:nowrap}
 .hero .names .ch{display:inline-block;opacity:0;transform:translateY(.22em);filter:blur(10px);transition:opacity 1s var(--ease-out),transform 1s var(--ease-out),filter 1s var(--ease-out);transition-delay:var(--cd,0ms)}
 .hero.play .names .ch{opacity:1;transform:none;filter:none}
 .hero .amp{font:400 clamp(50px,14vw,84px)/.6 var(--script);color:var(--gold-s);display:block;width:max-content;margin:6px auto 2px;padding:.12em .35em .18em;text-shadow:0 1px 14px #fdf7f4;
   clip-path:inset(0 100% 0 0);transition:clip-path 1.2s var(--ease-io) .55s}
 .hero.play .amp{clip-path:inset(0 0 0 0)}
-.hero-eb{color:var(--gold-t);margin-bottom:20px;font-size:clamp(11px,3vw,13px);opacity:0;transform:translateY(8px);transition:opacity .8s var(--ease-out) .25s,transform .8s var(--ease-out) .25s}
+.hero-eb{display:inline-block;color:var(--gold-t);margin-bottom:14px;padding:3px 10px;border-radius:2px;background:#fdf7f4d9;font-size:clamp(11px,3vw,13px);opacity:0;transform:translateY(8px);transition:opacity .8s var(--ease-out) .25s,transform .8s var(--ease-out) .25s}
 .hero.play .hero-eb{opacity:1;transform:none}
-.hero .lead{font:italic 400 clamp(16px,4.3vw,19px)/1.6 var(--serif);color:var(--ink);margin:0 auto;max-width:400px}
+/* Arch photo frame shared by the hero and the closing section. */
+.arch{position:relative;margin:0 auto;aspect-ratio:3/4;border:1px solid var(--gold);border-radius:999px 999px 2px 2px;padding:6px;background:var(--ivory);box-shadow:0 18px 40px #7a2e3b24}
+.arch .ph{position:absolute;inset:6px;overflow:hidden;overflow:clip;border-radius:999px 999px 1px 1px;background:var(--blush)}
+.arch img{position:absolute;left:0;top:0;width:100%;height:100%;object-fit:cover}
+.hero-ph{height:clamp(150px,30svh,300px);margin-bottom:18px;clip-path:inset(100% 0 0 0);transition:clip-path 1.2s var(--ease-io) .3s}
+.hero.play .hero-ph{clip-path:inset(0 0 0 0)}
+.hero-ph img{top:-8%;height:116%;transform:scale(1.12);transition:transform 2.4s var(--ease-out) .3s}
+.hero.play .hero-ph img{transform:none}
 .hero-cta{margin-top:26px;min-width:160px;white-space:nowrap}
 @media (max-width:359px){.hero-cta{letter-spacing:.16em;padding:13px 18px}}
 .badge{position:absolute;z-index:2;right:max(4%,14px);bottom:80px;width:clamp(72px,19vw,104px);color:var(--gold-s);animation:float 7s ease-in-out infinite;pointer-events:none}
-@media (max-height:740px){.badge{display:none}}
+@media (max-height:740px),(max-width:599px){.badge{display:none}}
 @keyframes float{50%{transform:translateY(-8px) rotate(-3deg)}}
 .par{position:absolute;inset:0;z-index:0;pointer-events:none}
 
@@ -276,8 +293,22 @@ form{display:flex;flex-direction:column;gap:20px;text-align:left;max-width:420px
 .chip[aria-pressed="true"]{background:var(--rose);color:var(--ivory);border-color:var(--rose)}
 .chip:focus-visible,.amin:focus-visible{outline:2px solid var(--rose);outline-offset:2px}
 
+/* ---------- bersama (photo interlude) ---------- */
+.bersama{position:relative;background:linear-gradient(var(--blush-bg),var(--ivory));overflow:hidden;overflow:clip}
+.bs-fig{position:relative;margin:0;width:100%;aspect-ratio:4/5;max-height:88svh;overflow:clip;background:#3a101a}
+.bs-fig img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 30%}
+.bs-fig::after{content:"";position:absolute;inset:0;pointer-events:none;
+  background:linear-gradient(180deg,transparent 30%,rgba(58,16,26,.5) 52%,rgba(46,12,20,.86) 74%,rgba(40,10,17,.94) 100%)}
+.bs-txt{position:absolute;left:0;right:0;bottom:0;z-index:1;padding:0 28px clamp(28px,6vw,44px);text-align:center;color:var(--ivory)}
+.bs-txt .script{color:var(--gold-l);width:max-content;margin:0 auto;padding:0 .35em .18em;text-shadow:0 1px 12px #2a0a12}
+.bs-q{font:italic 400 clamp(16px,4.3vw,19px)/1.6 var(--serif);margin:4px auto 0;max-width:460px;color:#fdf3f1;text-shadow:0 1px 10px #2a0a12}
+.bs-by{margin-top:12px;color:var(--gold-l);font-size:11px}
+
+/* ---------- penutup photo ---------- */
+.foot-ph{width:clamp(170px,50vw,240px);margin-bottom:34px}
+
 /* ---------- tanda kasih ---------- */
-#hadiah .lead{max-width:420px;margin:0 auto}
+#mempelai .lead,#hadiah .lead{max-width:420px;margin:0 auto}
 @media (max-width:599px){#hadiah .sprig{opacity:.4}}
 .gift-btn{margin-top:26px;min-width:210px}
 .acc-grid{display:grid;gap:14px;padding:28px 0 4px;text-align:left}
@@ -337,7 +368,7 @@ body.lb-open{overflow:hidden}
 
 /* ---------- footer ---------- */
 .ivory+.foot{border-top:1px solid #b08a5544}
-.foot{position:relative;background:linear-gradient(180deg,var(--ivory),#eef2ea);color:var(--ink);padding:70px 26px 40px;text-align:center;overflow:hidden}
+.foot{position:relative;background:linear-gradient(180deg,var(--ivory),#eef2ea);color:var(--ink);padding:70px 26px 40px;text-align:center;overflow:hidden;overflow:clip}
 .foot .wrap{position:relative;z-index:2;max-width:520px;margin:0 auto}
 .foot .salam{font:400 clamp(28px,7.6vw,38px)/1.25 var(--script);color:var(--gold-s);margin:30px 0 8px}
 .foot .host{font:500 clamp(19px,5vw,23px)/1.45 var(--serif);color:var(--rose);margin:10px 0 0}
@@ -411,6 +442,20 @@ body.lb-open{overflow:hidden}
     @keyframes drift{to{transform:translateY(var(--drift))}}
     .read .wd{opacity:.24;animation:lit linear both;animation-timeline:view();animation-range:cover 16% cover 42%}
     @keyframes lit{to{opacity:1}}
+    /* Hero photo drifts inside its arch; the image is 116% tall so the drift never shows an edge. */
+    .hero-ph img{animation:phDrift linear both;animation-timeline:scroll(root);animation-range:0 100vh}
+    @keyframes phDrift{to{translate:0 6%}}
+    /* Interlude: the photo opens from a narrow arch to the full column, then its caption fades in. */
+    .bs-fig{view-timeline-name:--bs;animation:bsOpen linear both;animation-timeline:--bs;animation-range:entry 0% cover 34%}
+    @keyframes bsOpen{from{clip-path:inset(5% 20% 0 20% round 999px 999px 0 0)}to{clip-path:inset(0 0 0 0 round 0 0 0 0)}}
+    .bs-fig img{animation:bsZoom linear both;animation-timeline:--bs;animation-range:entry 0% cover 40%}
+    @keyframes bsZoom{from{transform:scale(1.18)}to{transform:none}}
+    .bs-txt{animation:bsTxt linear both;animation-timeline:--bs;animation-range:cover 22% cover 34%}
+    @keyframes bsTxt{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
+    /* Closing photo turns from black and white to colour as it enters. */
+    .foot-ph{view-timeline-name:--ft}
+    .foot-ph img{animation:ftColor linear both;animation-timeline:--ft;animation-range:entry 30% cover 55%}
+    @keyframes ftColor{from{filter:grayscale(1) sepia(.08)}to{filter:none}}
   }
 }
 
@@ -433,6 +478,10 @@ body.lb-open{overflow:hidden}
   .tl-line{transform:none}
   .tl .ic .ok{transform:none}
   .choice-on{transition:clip-path .01s}
+  .hero-ph{clip-path:none;transition:none}
+  .hero-ph img{transform:none;transition:none}
+  .title .ch{transform:none;filter:none;transition:opacity .5s ease;transition-delay:var(--d,0ms)}
+  .script.rv .sw,.camp.rv .sw{clip-path:none;transition:none}
 }
 @media (max-width:380px){
   .ivory,.blush,.deep{padding-left:16px;padding-right:16px}
@@ -573,9 +622,9 @@ body.lb-open{overflow:hidden}
     <div class="vig"></div>
     <div class="in-wrap">
       <div class="caps hero-eb">Sabtu, 16 Januari 2027</div>
+      <div class="arch hero-ph"><span class="ph"><img src="foto/hero.webp" width="600" height="800" fetchpriority="high" decoding="async" alt="Nisa dan Fakhriy berbusana brokat merah muda dengan selempang hijau zaitun"></span></div>
       <h1 class="names" aria-label="Fakhriy dan Nisa"><span class="w" data-split aria-hidden="true">FAKHRIY</span><span class="amp" aria-hidden="true">dan</span><span class="w" data-split aria-hidden="true">NISA</span></h1>
       <svg class="orn rv"><use href="#orn"/></svg>
-      <p class="lead rv">Dengan memohon rahmat dan ridha Allah SWT, kami mengundang Bapak/Ibu/Saudara/i untuk menghadiri resepsi pernikahan putra-putri kami.</p>
       <a class="btn hero-cta rv" href="#rsvp">Konfirmasi Kehadiran</a>
     </div>
     <svg class="badge" viewBox="0 0 120 170" aria-hidden="true"><use href="#badge"/></svg>
@@ -633,6 +682,7 @@ body.lb-open{overflow:hidden}
       <div class="script rv">kedua</div>
       <h2 class="title rv">Mempelai</h2>
       <svg class="orn rv"><use href="#orn"/></svg>
+      <p class="p it muted lead rv">Dengan memohon rahmat dan ridha Allah SWT, kami mengundang Bapak/Ibu/Saudara/i untuk menghadiri resepsi pernikahan putra-putri kami.</p>
       <div class="couple">
         <figure class="pf rv">
           <img src="foto/mempelai-fakhriy.webp" width="400" height="565" loading="lazy" decoding="async" alt="Muhammad Fakhriy Ismail berbusana adat Bugis-Makassar">
@@ -700,6 +750,18 @@ body.lb-open{overflow:hidden}
         </div>
       </div>
     </div>
+  </section>
+
+  <!-- ===== BERSAMA (photo interlude) ===== -->
+  <section class="bersama" id="bersama" data-section>
+    <figure class="bs-fig">
+      <img src="foto/bersama-480.webp" srcset="foto/bersama-480.webp 480w, foto/bersama-780.webp 780w" sizes="(min-width: 760px) 760px, 100vw" width="780" height="975" loading="lazy" decoding="async" alt="Nisa duduk bermahkota emas dan Fakhriy berdiri di belakangnya, berbusana adat Bugis-Makassar">
+      <figcaption class="bs-txt">
+        <div class="script">bersama</div>
+        <blockquote class="bs-q">“Kita tidak menemukan cinta dengan mencari orang yang sempurna, melainkan dengan belajar melihat orang yang tidak sempurna secara sempurna.”</blockquote>
+        <div class="caps bs-by">Sam Keen</div>
+      </figcaption>
+    </figure>
   </section>
 
   <!-- ===== RSVP ===== -->
@@ -796,6 +858,7 @@ body.lb-open{overflow:hidden}
     <svg class="cl" style="top:-60px;left:-140px;width:clamp(180px,44vw,250px);transform:rotate(30deg);opacity:.55" viewBox="0 0 300 300"><use href="#roses"/></svg>
     <svg class="cl" style="bottom:-80px;right:-130px;width:clamp(180px,44vw,250px);transform:rotate(210deg);opacity:.55" viewBox="0 0 300 300"><use href="#roses"/></svg>
     <div class="wrap">
+      <figure class="arch foot-ph rv"><span class="ph"><img src="foto/penutup.webp" width="480" height="640" loading="lazy" decoding="async" alt="Nisa dan Fakhriy berdiri saling membelakangi, berbusana brokat merah muda"></span></figure>
       <p class="p it rv">Merupakan suatu kehormatan dan kebahagiaan bagi kami sekeluarga apabila Bapak/Ibu/Saudara/i berkenan hadir untuk memberikan doa restu kepada kedua mempelai.</p>
       <svg class="orn rv"><use href="#orn"/></svg>
       <h2 class="title rv" style="font-size:clamp(24px,6.4vw,32px)">Terima Kasih</h2>
@@ -903,7 +966,7 @@ body.lb-open{overflow:hidden}
     const moveGate = springFollow([...$$('.gate .cl').map(el => [el, 1]), ...$$('.gate .box').map(el => [el, -0.3])], 14);
     gate.addEventListener('pointermove', e => moveGate(e.clientX / innerWidth * 2 - 1, e.clientY / innerHeight * 2 - 1));
     const hero = $('#beranda');
-    const moveHero = springFollow($$('.hero .cl').map((el, i) => [el, i < 4 ? 0.55 : 1]), 18);
+    const moveHero = springFollow([...$$('.hero .cl').map((el, i) => [el, i < 4 ? 0.55 : 1]), [$('.hero-ph'), -0.35]], 18);
     hero.addEventListener('pointermove', e => {
       const r = hero.getBoundingClientRect();
       moveHero((e.clientX - r.left) / r.width * 2 - 1, (e.clientY - r.top) / r.height * 2 - 1);
@@ -956,6 +1019,26 @@ body.lb-open{overflow:hidden}
     });
   });
 
+  // Section titles settle in letter by letter when revealed; screen readers still get the whole word.
+  $$('.title').forEach(t => {
+    const txt = t.textContent.trim().replace(/\s+/g, ' ');
+    t.setAttribute('aria-label', txt);
+    t.textContent = '';
+    let n = 0;
+    txt.split(' ').forEach((word, wi) => {
+      if (wi) t.append(' ');
+      const w = document.createElement('span'); w.className = 'tw'; w.setAttribute('aria-hidden', 'true');
+      [...word].forEach(ch => {
+        const s = document.createElement('span'); s.className = 'ch'; s.textContent = ch;
+        s.style.setProperty('--cd', Math.min(n++ * 40, 440) + 'ms');
+        w.append(s);
+      });
+      t.append(w);
+    });
+    t.classList.add('split');
+  });
+  $$('.script.rv, .camp.rv').forEach(el => { const s = document.createElement('span'); s.className = 'sw'; s.append(...el.childNodes); el.append(s); });
+
   // Split the verse translation into words; CSS scroll-driven animation lights them as they are read.
   $$('[data-read]').forEach(p => {
     const parts = p.textContent.split(/(\s+)/);
@@ -994,7 +1077,7 @@ body.lb-open{overflow:hidden}
       const hero = $('#beranda');
       let heroVisible = true, base = null;
       new IntersectionObserver(([en]) => { heroVisible = en.isIntersecting; }).observe(hero);
-      const move = springFollow($$('.hero .cl').map((el, i) => [el, i < 4 ? 0.55 : 1]), 16);
+      const move = springFollow([...$$('.hero .cl').map((el, i) => [el, i < 4 ? 0.55 : 1]), [$('.hero-ph'), -0.35]], 16);
       const clamp = v => Math.max(-1, Math.min(1, v));
       addEventListener('deviceorientation', e => {
         if (!heroVisible || e.gamma == null || e.beta == null) return;
@@ -1038,7 +1121,7 @@ body.lb-open{overflow:hidden}
 
   // Nav: one indicator slides between links; a hairline shows reading progress.
   const nav = $('#nav'), links = $$('.nav .grp a'), ind = $('#navInd');
-  const NAV_MAP = { acara: '#acara', ayat: '#acara', mempelai: '#mempelai', galeri: '#mempelai', rangkaian: '#acara', rsvp: '#rsvp', hadiah: '#ucapan', ucapan: '#ucapan' };
+  const NAV_MAP = { acara: '#acara', ayat: '#acara', mempelai: '#mempelai', galeri: '#mempelai', rangkaian: '#acara', bersama: '#acara', rsvp: '#rsvp', hadiah: '#ucapan', ucapan: '#ucapan' };
   let current = null;
   const moveInd = (a, instant) => {
     if (!a) { ind.style.opacity = '0'; return; }
