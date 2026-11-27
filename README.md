@@ -10,6 +10,7 @@ Undangan digital resepsi pernikahan Muhammad Fakhriy Ismail, A.Md. dan Khoirunni
 ```
 index.html   Halaman undangan (HTML, CSS, dan JavaScript dalam satu file)
 font/        Font yang di-host sendiri (woff2) beserta lisensinya
+foto/        Foto mempelai dan galeri (WebP, sudah dioptimalkan)
 musik/       Musik latar (MP3)
 ```
 
@@ -22,6 +23,10 @@ Nama tamu bisa dipersonalisasi lewat parameter URL, misalnya `index.html?to=Nama
 ## Musik
 
 Halaman memutar `musik/nasyid-pernikahan.mp3` (Wedding Nasheed, Muhammad Al Muqit) setelah tombol "Buka Undangan" ditekan. Untuk mengganti lagu, timpa file tersebut dengan nama yang sama. Jika file tidak ada atau gagal diputar, undangan tetap berjalan dan tombol musik tampil dalam keadaan berhenti.
+
+## Foto
+
+Section Mempelai memakai `foto/mempelai-fakhriy.webp` dan `foto/mempelai-nisa.webp`. Section Galeri memakai `foto/galeri-01.webp` sampai `galeri-13.webp` (800×1200, untuk tampilan penuh) dan versi `-480.webp` (480×720, untuk grid). Foto dibuka dalam lightbox yang bisa digeser. Untuk mengganti foto, timpa file dengan nama dan ukuran yang sama, lalu perbarui teks `alt` di `index.html` jika isi fotonya berbeda.
 
 ## Warna
 
@@ -36,4 +41,5 @@ Ini masih prototype. Form konfirmasi kehadiran, ucapan, dan tombol Aamiin belum 
 - Font Cormorant Garamond, Pinyon Script, dan Amiri: SIL Open Font License 1.1. Teks lisensi ada di folder `font/`.
 - Ikon: [Phosphor Icons](https://phosphoricons.com), MIT License, Copyright (c) 2023 Phosphor Icons.
 - Musik: Wedding Nasheed, Muhammad Al Muqit.
+- Foto: dokumentasi prewedding mempelai (dari undangan akad di inv.nstory.id).
 - Peta: Google Maps embed.
