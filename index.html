@@ -6,6 +6,20 @@
 <title>Undangan Resepsi Fakhriy &amp; Nisa</title>
 <meta name="description" content="Undangan resepsi pernikahan Muhammad Fakhriy Ismail dan Khoirunnisa Nova, Sabtu 16 Januari 2027 di Gedung Haji Bate, Gowa.">
 <meta name="theme-color" content="#FDF7F4">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<!-- Link preview for WhatsApp and other apps; og:image must be an absolute URL. -->
+<meta property="og:type" content="website">
+<meta property="og:locale" content="id_ID">
+<meta property="og:site_name" content="Undangan Fakhriy &amp; Nisa">
+<meta property="og:title" content="Undangan Resepsi Pernikahan Fakhriy &amp; Nisa">
+<meta property="og:description" content="Sabtu, 16 Januari 2027, pukul 19.00 WITA di Gedung Haji Bate, Sungguminasa - Gowa.">
+<meta property="og:url" content="https://undagan-pernikahan-sable.vercel.app/">
+<meta property="og:image" content="https://undagan-pernikahan-sable.vercel.app/foto/og.jpg">
+<meta property="og:image:type" content="image/jpeg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Nisa dan Fakhriy dalam bingkai lengkung, dengan tulisan Fakhriy dan Nisa, Sabtu, 16 Januari 2027">
+<meta name="twitter:card" content="summary_large_image">
 <link rel="preload" href="font/cormorantgaramond-normal-latin.woff2" as="font" type="font/woff2" crossorigin>
 <style>
 /* Self-hosted fonts (SIL Open Font License): Cormorant Garamond, Pinyon Script, Amiri. */
@@ -442,7 +456,7 @@ body.lb-open{overflow:hidden}
 .face .guest{margin-top:30px;font:italic 400 16px var(--serif);color:var(--ink2)}
 .face .guest b{display:block;font:500 21px var(--serif);font-style:normal;letter-spacing:.06em;color:var(--rose);margin-top:4px}
 .face .btn{margin-top:26px;background:var(--rose);border-color:var(--rose);color:var(--ivory);animation:glow 2.6s ease-in-out infinite}
-@keyframes glow{50%{box-shadow:0 0 0 4px #f6d3cfb3,0 0 30px #d07c8966}}
+@keyframes glow{50%{box-shadow:0 0 0 5px #f6d3cfb3}}
 .face .caps{color:var(--gold-t)}
 .face .box{will-change:translate}
 
@@ -501,6 +515,7 @@ body.lb-open{overflow:hidden}
 @media (max-width:380px){
   .ivory,.blush,.deep{padding-left:16px;padding-right:16px}
   .facts>div{padding:2px 3px}
+  .map-veil span{letter-spacing:.14em;padding:9px 12px}
 }
 </style>
 </head>
@@ -607,7 +622,7 @@ body.lb-open{overflow:hidden}
       <div class="caps">Undangan Resepsi Pernikahan</div>
       <svg class="orn"><use href="#orn"/></svg>
       <p class="n">FAKHRIY</p><span class="a">dan</span><p class="n">NISA</p>
-      <div class="caps" style="margin-top:22px">Sabtu · 16 Januari 2027</div>
+      <div class="caps" style="margin-top:22px">Sabtu, 16 Januari 2027</div>
       <p class="guest">Kepada Yth.<b class="guest-name">Bapak/Ibu/Saudara/i</b></p>
       <button class="btn open-btn" type="button">Buka Undangan</button>
     </div>
@@ -670,7 +685,7 @@ body.lb-open{overflow:hidden}
       <p class="p center rv">Gedung Haji Bate<br>Jl. Tumanurung Raya No. 3, Sungguminasa - Gowa</p>
       <div class="map rv" id="map">
         <iframe title="Peta lokasi Gedung Haji Bate" tabindex="-1" referrerpolicy="no-referrer-when-downgrade"></iframe>
-        <button class="map-veil" type="button" aria-label="Aktifkan peta untuk digeser"><span>Ketuk untuk geser peta</span></button>
+        <button class="map-veil" type="button" aria-label="Aktifkan peta untuk digeser"><span>Ketuk untuk menggeser peta</span></button>
       </div>
       <div class="btns rv" style="margin-top:26px">
         <a class="btn" id="mapsBtn" target="_blank" rel="noopener">Lihat Lokasi</a>
@@ -831,7 +846,7 @@ body.lb-open{overflow:hidden}
     <div class="wrap center">
       <h2 class="title rv">Tanda Kasih</h2>
       <svg class="orn rv"><use href="#orn"/></svg>
-      <p class="p it muted lead rv">Doa restu Bapak/Ibu/Saudara/i sudah lebih dari cukup bagi kami. Namun bila ingin memberikan tanda kasih, dapat melalui rekening berikut.</p>
+      <p class="p it muted lead rv">Doa restu Bapak/Ibu/Saudara/i sudah lebih dari cukup bagi kami. Namun, bila ingin memberikan tanda kasih, dapat melalui rekening berikut.</p>
       <button class="btn line gift-btn rv" type="button" id="giftBtn" aria-expanded="false" aria-controls="giftList"><span class="lbl">Lihat Rekening</span></button>
       <div class="collapse hide" id="giftList"><div>
         <div class="acc-grid">
@@ -867,7 +882,7 @@ body.lb-open{overflow:hidden}
         <input class="hp" type="text" name="website" tabindex="-1" autocomplete="off" aria-hidden="true">
         <div class="fld"><span id="doaLbl">Pilih doa singkat</span>
           <div class="chips" role="group" aria-labelledby="doaLbl">
-            <button type="button" class="chip" aria-pressed="false" data-doa="Barakallahu lakuma wa baraka 'alaikuma wa jama'a bainakuma fii khair.">Barakallahu lakuma</button>
+            <button type="button" class="chip" aria-pressed="false" data-doa="Barakallahu lakuma wa baraka ’alaikuma wa jama’a bainakuma fii khair.">Barakallahu lakuma</button>
             <button type="button" class="chip" aria-pressed="false" data-doa="Semoga menjadi keluarga yang sakinah, mawaddah, warahmah.">Sakinah mawaddah warahmah</button>
             <button type="button" class="chip" aria-pressed="false" data-doa="Selamat menempuh hidup baru, semoga langgeng hingga ke surga-Nya.">Selamat menempuh hidup baru</button>
           </div>
@@ -1110,6 +1125,7 @@ body.lb-open{overflow:hidden}
     if (on) mapFrame.focus({ preventScroll: true });
   };
   mapVeil.addEventListener('click', () => { setMap(true); haptic(6); });
+  if (fine) $('span', mapVeil).textContent = 'Klik untuk menggeser peta';
   document.addEventListener('pointerdown', e => { if (map.classList.contains('on') && !map.contains(e.target)) setMap(false); });
   addEventListener('keydown', e => { if (e.key === 'Escape' && map.classList.contains('on')) { setMap(false); mapVeil.focus(); } });
 
@@ -1310,11 +1326,11 @@ body.lb-open{overflow:hidden}
         giftStatus.textContent = `Nomor rekening ${btn.dataset.bank} tersalin`;
         clearTimeout(timer);
         timer = setTimeout(() => { setLabel(btn, 'Salin Nomor', 'copy'); giftStatus.textContent = ''; }, 1800);
-      } catch { toast('Gagal menyalin, salin manual'); }
+      } catch { toast('Gagal menyalin. Silakan salin nomor secara manual.'); }
     });
   });
   $('#shareBtn').addEventListener('click', async () => {
-    const text = 'Undangan Resepsi Pernikahan Fakhriy & Nisa, Sabtu 16 Januari 2027 di Gedung Haji Bate.';
+    const text = 'Undangan Resepsi Pernikahan Fakhriy & Nisa, Sabtu, 16 Januari 2027 di Gedung Haji Bate.';
     const url = location.origin + location.pathname;
     if (navigator.share) { try { await navigator.share({ title: EVENT.title, text, url }); } catch {} }
     else window.open('https://wa.me/?text=' + encodeURIComponent(text + ' ' + url), '_blank', 'noopener');
@@ -1388,8 +1404,8 @@ body.lb-open{overflow:hidden}
     btn.disabled = false; setLabel(btn, 'Kirim Konfirmasi');
     const hadir = rsvpForm.hadir.value === 'Hadir';
     $('#rsvpMsg').textContent = hadir
-      ? `${nama}, konfirmasi hadir untuk ${jml} orang sudah tercatat.`
-      : `${nama}, terima kasih atas kabarnya. Doa restu Anda sangat berarti.`;
+      ? `${nama}, konfirmasi kehadiran untuk ${jml} orang sudah tercatat.`
+      : `${nama}, terima kasih atas kabarnya. Doa restu dari jauh pun sangat berarti bagi kami.`;
     rsvpForm.hidden = true;
     const done = $('#rsvpDone'); done.classList.add('show');
     if (hadir) requestAnimationFrame(() => burst($('.check', done)));
@@ -1420,7 +1436,7 @@ body.lb-open{overflow:hidden}
     el.animate([{ transform: 'translateY(-8px) scale(.98)', filter: 'blur(3px)' }, { transform: 'none', filter: 'none' }], { duration: 480, easing: EASE_OUT });
   };
   // Prototype sample wishes; counts are mock data.
-  addWish('Andi Nurhalisa', 'Barakallahu lakuma wa baraka alaikuma wa jama’a bainakuma fii khair. Semoga menjadi keluarga sakinah, mawaddah, warahmah.', 'contoh ucapan', false, 4);
+  addWish('Andi Nurhalisa', 'Barakallahu lakuma wa baraka ’alaikuma wa jama’a bainakuma fii khair. Semoga menjadi keluarga sakinah, mawaddah, warahmah.', 'contoh ucapan', false, 4);
   addWish('Muh. Ilham Syarif', 'Selamat menempuh hidup baru, semoga langgeng hingga jannah.', 'contoh ucapan', false, 2);
 
   // "Aamiin": one toggle per guest per wish.

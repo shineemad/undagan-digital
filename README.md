@@ -9,8 +9,9 @@ Undangan digital resepsi pernikahan Muhammad Fakhriy Ismail, A.Md. dan Khoirunni
 
 ```
 index.html   Halaman undangan (HTML, CSS, dan JavaScript dalam satu file)
+favicon.svg  Ikon tab browser (monogram F/N)
 font/        Font yang di-host sendiri (woff2) beserta lisensinya
-foto/        Foto mempelai dan galeri (WebP, sudah dioptimalkan)
+foto/        Foto mempelai dan galeri (WebP, sudah dioptimalkan) dan og.jpg untuk pratinjau tautan
 musik/       Musik latar (MP3)
 ```
 
@@ -19,6 +20,12 @@ musik/       Musik latar (MP3)
 Buka `index.html` langsung di browser, atau unggah seluruh folder ke hosting statis seperti GitHub Pages, Vercel, atau Netlify.
 
 Nama tamu bisa dipersonalisasi lewat parameter URL, misalnya `index.html?to=Nama%20Tamu`.
+
+## Pratinjau tautan
+
+Saat tautan undangan dikirim lewat WhatsApp atau aplikasi lain, pratinjaunya memakai `foto/og.jpg` (1200×630): foto mempelai dalam bingkai lengkung, nama "Fakhriy dan Nisa", dan tanggal resepsi. Nama dan tanggal ada di tengah gambar, sehingga tetap terlihat saat WhatsApp memotongnya menjadi persegi. Judul dan keterangan pratinjau diatur di tag `og:title` dan `og:description` pada `index.html`.
+
+Tag `og:url` dan `og:image` memakai alamat lengkap `https://undagan-pernikahan-sable.vercel.app/`. Jika undangan dipindah ke domain lain, ganti alamat di kedua tag tersebut. WhatsApp menyimpan pratinjau lama selama beberapa waktu, jadi perubahan gambar mungkin baru terlihat setelah beberapa jam atau dengan tautan baru (misalnya menambahkan `?to=` nama tamu).
 
 ## Musik
 
