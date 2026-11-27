@@ -26,7 +26,7 @@ Halaman memutar `musik/lagu-pernikahan-kita.mp3` (Lagu Pernikahan Kita, Tiara An
 
 ## Foto
 
-Section Mempelai memakai `foto/mempelai-fakhriy.webp` dan `foto/mempelai-nisa.webp`. Section Galeri memakai `foto/galeri-01.webp` sampai `galeri-13.webp` (800×1200, untuk tampilan penuh) dan versi `-480.webp` (480×720, untuk grid). Foto dibuka dalam lightbox yang bisa digeser. Untuk mengganti foto, timpa file dengan nama dan ukuran yang sama, lalu perbarui teks `alt` di `index.html` jika isi fotonya berbeda.
+Section Mempelai memakai `foto/mempelai-fakhriy.webp` dan `foto/mempelai-nisa.webp`. Hero memakai `foto/hero.webp`, section "bersama" memakai `foto/bersama-480.webp` dan `bersama-780.webp`, dan penutup memakai `foto/penutup.webp`. Section Galeri memakai `foto/galeri-01.webp` sampai `galeri-13.webp` (800×1200, untuk tampilan penuh) dan versi `-480.webp` (480×720, untuk baris foto yang berjalan otomatis). Baris foto bisa digeser, berhenti saat disentuh atau saat tombol jeda ditekan, dan tombol "Lihat Semua Foto" membuka semua foto dalam lightbox. Untuk mengganti foto, timpa file dengan nama dan ukuran yang sama, lalu perbarui teks `alt` di `index.html` jika isi fotonya berbeda.
 
 ## Warna
 
