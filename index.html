@@ -151,9 +151,10 @@ img,svg{display:block}
 /* ---------- interactive map ---------- */
 .map{position:relative;width:100%;height:clamp(200px,54vw,260px);margin:24px auto 0;border:1px solid var(--gold);border-radius:2px;overflow:hidden;
   background:var(--blush-bg);box-shadow:0 0 0 4px var(--ivory),0 0 0 5px #b08a5555}
-.map::before{content:"";position:absolute;inset:0;background:linear-gradient(100deg,transparent 30%,#ffffff8c 50%,transparent 70%) 0 0/250% 100%;animation:shimmer 1.4s linear infinite;transition:opacity .4s ease}
+/* Shimmer slides a wide gradient with transform (compositor only); the range matches the old 150% to -100% background-position sweep. */
+.map::before{content:"";position:absolute;top:0;bottom:0;left:0;width:250%;background:linear-gradient(100deg,transparent 30%,#ffffff8c 50%,transparent 70%);transform:translateX(-90%);animation:shimmer 1.4s linear infinite;transition:opacity .4s ease}
 .map.loaded::before{opacity:0;animation:none}
-@keyframes shimmer{from{background-position:150% 0}to{background-position:-100% 0}}
+@keyframes shimmer{to{transform:translateX(60%)}}
 .map iframe{position:absolute;inset:0;width:100%;height:100%;border:0;opacity:0;filter:grayscale(.45) sepia(.4) saturate(.85);pointer-events:none;transition:opacity .5s ease,filter .5s ease}
 .map.loaded iframe{opacity:1}
 .map.on iframe{filter:none;pointer-events:auto}
@@ -428,12 +429,7 @@ body.lb-open{overflow:hidden}
 .sheet h4{margin:0 0 6px;text-align:center;font:600 12px var(--serif);letter-spacing:.3em;text-transform:uppercase;color:var(--ink)}
 .burst{position:fixed;z-index:70;width:10px;height:8px;border-radius:80% 10% 80% 20%;background:radial-gradient(circle at 30% 30%,#f6d3cf,#d07c89 70%);pointer-events:none}
 .petal{position:fixed;top:-20px;z-index:35;pointer-events:none;width:var(--s);height:calc(var(--s)*.85);border-radius:80% 10% 80% 20%;
-  background:radial-gradient(circle at 30% 30%,#fbe2df,#d98f9b 70%);box-shadow:inset -2px -2px 4px #7a2e3b26;opacity:.85;animation:fall var(--t) linear forwards}
-@keyframes fall{
-  25%{transform:translate(var(--x1),25vh) rotate(80deg)}
-  50%{transform:translate(var(--x2),50vh) rotate(170deg)}
-  75%{transform:translate(var(--x1),75vh) rotate(260deg)}
-  100%{transform:translate(var(--x2),106vh) rotate(350deg);opacity:.3}}
+  background:radial-gradient(circle at 30% 30%,#fbe2df,#d98f9b 70%);box-shadow:inset -2px -2px 4px #7a2e3b26;opacity:.85}
 
 /* ---------- gate (cover) ---------- */
 .gate{position:fixed;inset:0;z-index:80;perspective:1600px}
@@ -456,8 +452,10 @@ body.lb-open{overflow:hidden}
 .face .a{font:400 clamp(42px,11vw,62px)/.6 var(--script);color:var(--gold-s);display:block;margin:4px 0}
 .face .guest{margin-top:30px;font:italic 400 16px var(--serif);color:var(--ink2)}
 .face .guest b{display:block;font:500 21px var(--serif);font-style:normal;letter-spacing:.06em;color:var(--rose);margin-top:4px}
-.face .btn{margin-top:26px;background:var(--rose);border-color:var(--rose);color:var(--ivory);animation:glow 2.6s ease-in-out infinite}
-@keyframes glow{50%{box-shadow:0 0 0 5px #f6d3cfb3}}
+.face .btn{position:relative;margin-top:26px;background:var(--rose);border-color:var(--rose);color:var(--ivory)}
+/* The pulse ring breathes through opacity on its own layer, so the idle cover never repaints. */
+.face .btn::after{content:"";position:absolute;inset:-6px;border:5px solid #f6d3cfb3;border-radius:7px;opacity:0;pointer-events:none;animation:glow 2.6s ease-in-out infinite}
+@keyframes glow{50%{opacity:1}}
 .face .caps{color:var(--gold-t)}
 .face .box{will-change:translate}
 
@@ -1205,8 +1203,10 @@ body.lb-open{overflow:hidden}
   $$('[data-section]').forEach(s => spy.observe(s));
   addEventListener('resize', () => moveInd(current, true));
 
-  // Countdown: only the digits that change roll in.
+  // Countdown: only the digits that change roll in, and only while the guest can see them.
   const cdEls = Object.fromEntries($$('#countdown b').map(b => [b.dataset.u, b]));
+  let cdSeen = false;
+  if ('IntersectionObserver' in window) new IntersectionObserver(([e]) => { cdSeen = e.isIntersecting; }).observe($('#countdown'));
   const tick = () => {
     const s = Math.max(0, Math.floor((EVENT.startMs - Date.now()) / 1000));
     if (s === 0) { $('#countdown').hidden = true; $('.cd-label').hidden = true; return; }
@@ -1215,7 +1215,7 @@ body.lb-open{overflow:hidden}
       const el = cdEls[k], t = String(v[k]).padStart(2, '0');
       if (el.textContent === t) continue;
       el.textContent = t;
-      if (!reduced && el.dataset.ready) {
+      if (!reduced && cdSeen && el.dataset.ready) {
         el.animate([{ transform: 'translateY(-45%)', opacity: 0, filter: 'blur(2px)' }, { transform: 'none', opacity: 1, filter: 'none' }], { duration: 320, easing: EASE_OUT });
       }
       el.dataset.ready = '1';
@@ -1664,7 +1664,7 @@ body.lb-open{overflow:hidden}
     });
   }
 
-  // Falling rose petals
+  // Falling rose petals. Keyframes carry concrete values (no var()) so the compositor runs the fall, not the main thread.
   let petalTimer;
   function startPetals() {
     if (reduced || petalTimer) return;
@@ -1672,13 +1672,17 @@ body.lb-open{overflow:hidden}
       if (document.hidden || document.querySelectorAll('.petal').length > 7) return;
       const p = document.createElement('span'); p.className = 'petal';
       const w = Math.min(innerWidth, 760), left = (innerWidth - w) / 2;
+      const x1 = (Math.random() * 70 - 35).toFixed(1), x2 = (Math.random() * 110 - 55).toFixed(1);
       p.style.left = left + Math.random() * w + 'px';
       p.style.setProperty('--s', 9 + Math.random() * 8 + 'px');
-      p.style.setProperty('--t', 9 + Math.random() * 6 + 's');
-      p.style.setProperty('--x1', (Math.random() * 70 - 35) + 'px');
-      p.style.setProperty('--x2', (Math.random() * 110 - 55) + 'px');
-      p.addEventListener('animationend', () => p.remove());
       document.body.appendChild(p);
+      p.animate([
+        { transform: 'translate(0px, 0vh) rotate(0deg)', opacity: .85 },
+        { transform: `translate(${x1}px, 25vh) rotate(80deg)`, offset: .25 },
+        { transform: `translate(${x2}px, 50vh) rotate(170deg)`, offset: .5 },
+        { transform: `translate(${x1}px, 75vh) rotate(260deg)`, offset: .75 },
+        { transform: `translate(${x2}px, 106vh) rotate(350deg)`, opacity: .3 },
+      ], { duration: 9000 + Math.random() * 6000, easing: 'linear', fill: 'forwards' }).onfinish = () => p.remove();
     };
     spawn(); petalTimer = setInterval(spawn, 1800);
   }
