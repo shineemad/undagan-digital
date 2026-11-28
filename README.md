@@ -34,7 +34,7 @@ Halaman memutar `musik/lagu-pernikahan-kita.mp3` (Lagu Pernikahan Kita, Tiara An
 
 ## Video pembuka
 
-Setelah tamu menekan "Buka Undangan", pintu cover terbuka ke film pembuka 18 detik (`video/pembuka.mp4`, 720×1280, H.264, tanpa suara, 0,9 MB). Lagu undangan sudah mulai berputar dari ketukan yang sama, jadi film dan lagu berjalan bersama. Setelah film selesai, halaman undangan muncul dan hero mulai beranimasi.
+Setelah tamu menekan "Buka Undangan", pintu cover terbuka ke film pembuka 18 detik (`video/pembuka.mp4`, 720×1280, H.264, tanpa suara, 0,9 MB). Lagu undangan sudah mulai berputar dari ketukan yang sama, jadi film dan lagu berjalan bersama. Setelah film selesai (atau dilewati), film terangkat ke atas seperti tirai dengan garis emas di tepinya, dan halaman undangan muncul dari bawah sambil nama mempelai mulai beranimasi. Film tidak lagi memudar di atas halaman, jadi teks film dan hero tidak pernah tampil bertumpuk.
 
 - Film ini tidak mengulang isi undangan (tanpa tanggal, tempat, ayat, atau jadwal). Isinya kata-kata ajakan untuk datang, dengan gaya visual undangan (mawar, bingkai emas, monogram F/N): "Assalamu’alaikum Warahmatullahi Wabarakatuh", "Dengan penuh sukacita kami mengundang Bapak/Ibu/Saudara/i untuk hadir dan berbagi kebahagiaan", "Kehadiran dan doa restu adalah hadiah terindah bagi kami", lalu "Sampai jumpa di hari istimewa kami" dengan foto mempelai dalam bingkai lengkung dan tanda tangan "Kami yang berbahagia, Fakhriy & Nisa". Setiap baris muncul mengikuti ketukan lagu.
 - Tombol "Lewati" muncul di kanan atas sejak detik ke-1,2. Tombol Esc juga melewati film. Tombol musik tetap bisa ditekan selama film diputar.

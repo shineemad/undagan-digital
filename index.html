@@ -96,6 +96,11 @@ img,svg{display:block}
   .btn.link:hover{background:none;box-shadow:none;color:var(--rose)}
 }
 .btn[disabled]{cursor:progress}
+/* .btn's own transition list would otherwise drop the scroll reveal, so revealed buttons popped in ahead of their section.
+   The rise uses `translate` so the press feedback keeps its quick `transform`. */
+.btn.rv{transition:opacity .8s var(--ease-out) var(--d,0ms),translate .8s var(--ease-out) var(--d,0ms),filter .8s var(--ease-out) var(--d,0ms),
+  background-color .25s ease,color .25s ease,box-shadow .25s ease,transform .16s var(--ease-out)}
+.btn.rv:not(.in){transform:none;translate:0 14px}
 .btn .lbl{display:inline-flex;align-items:center;gap:9px;transition:filter .18s ease,opacity .18s ease}
 .btn .lbl.out{filter:blur(3px);opacity:0}
 .btn .lbl svg{width:14px;height:14px}
@@ -490,13 +495,20 @@ body.lb-open{overflow:hidden}
 }
 
 /* ---------- opening film: plays once after "Buka Undangan", the doors open onto it ---------- */
-.intro{position:fixed;inset:0;z-index:70;display:grid;place-items:center;background:radial-gradient(circle at 50% 0,#fbeae7,#f1e7e2 60%);transition:opacity .8s ease}
+.intro{position:fixed;inset:0;z-index:70;display:grid;place-items:center;overflow:hidden;background:radial-gradient(circle at 50% 0,#fbeae7,#f1e7e2 60%);transition:transform 1.15s var(--ease-io)}
 .intro[hidden]{display:none}
-.intro.out{opacity:0;pointer-events:none}
+/* Exit: the film lifts away like a curtain instead of cross-fading, so its last frame never sits on top of the hero.
+   The overlay slides up while the film inside slides back down by most of that distance, which reads as a wipe
+   with a little parallax; a gold hairline and a soft shadow ride the edge. Transform only, so it stays on the compositor. */
+.intro.out{transform:translateY(-100%);pointer-events:none;box-shadow:0 14px 44px #7a2e3b2e}
+.intro::after{content:"";position:absolute;z-index:3;left:0;right:0;bottom:0;height:1px;background:linear-gradient(90deg,#b08a5500,var(--gold) 18%,var(--gold) 82%,#b08a5500);opacity:0;transition:opacity .25s ease}
+.intro.out::after{opacity:1}
 /* Wider than 9:16 (desktop, tablet): the film sits in a column like the page. Taller phones: it fills the screen, cropping only the plain sides. */
 .intro-box{position:relative;height:100%;aspect-ratio:9/16;max-width:100%;overflow:hidden;background:radial-gradient(ellipse 80% 60% at 50% 42%,#fffaf7 0%,var(--ivory) 55%,#f6e2de 100%);box-shadow:0 0 0 1px #b08a5533,0 0 80px #7a2e3b1f}
 @media (max-aspect-ratio:9/16){.intro-box{position:absolute;inset:0;height:auto;aspect-ratio:auto;box-shadow:none}}
 .intro-box video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block}
+.intro-box{transition:transform 1.15s var(--ease-io)}
+.intro.out .intro-box{transform:translateY(78%)}
 /* Same double gold frame as the cover, drawn in CSS so it stays whole however the film is cropped. */
 .intro-box::before,.intro-box::after{content:"";position:absolute;z-index:1;pointer-events:none}
 .intro-box::before{inset:16px;border:1px solid #b08a5566}
@@ -506,6 +518,7 @@ body.lb-open{overflow:hidden}
   opacity:0;transition:opacity .5s ease,background-color .2s ease,transform .16s var(--ease-out)}
 .intro-skip svg{width:14px;height:14px}
 .intro.ready .intro-skip{opacity:1}
+.intro.out .intro-skip{opacity:0}
 .intro-skip:active{transform:scale(.96)}
 .intro-skip:focus-visible{outline:2px solid var(--rose);outline-offset:3px}
 @media (hover:hover) and (pointer:fine){.intro-skip:hover{background:var(--ivory)}}
@@ -549,6 +562,7 @@ body.lb-open{overflow:hidden}
   }
   .map::before{opacity:.5}
   .rv,.tl .node{transform:none;filter:none;transition:opacity .4s ease}
+  .btn.rv,.btn.rv:not(.in){translate:none;filter:none;transition:opacity .4s ease,background-color .25s ease,color .25s ease,box-shadow .25s ease}
   .hero .names .ch{transform:none;filter:none;transition:opacity .5s ease}
   .hero .amp{clip-path:none;transition:none}
   .orn,.pf .ring{stroke-dasharray:none}
@@ -1216,7 +1230,7 @@ body.lb-open{overflow:hidden}
 
   // Everything that should animate in view waits until the page is actually visible (after the opening film).
   const revealPage = heroDelay => {
-    document.body.classList.remove('locked', 'intro-on');
+    document.body.classList.remove('locked');
     page.inert = false;
     setTimeout(() => $('#beranda').classList.add('play'), heroDelay);
     startReveal(); startPetals(); watchMap();
@@ -1227,20 +1241,24 @@ body.lb-open{overflow:hidden}
   // so a slow connection never stands between the guest and the invitation.
   const intro = $('#intro'), introVid = $('#introVid'), introSkip = $('#introSkip');
   const INTRO_SRC = 'video/pembuka.mp4';
+  const INTRO_LIFT = 1150; // matches the .intro transform transition
   const saveData = !!(navigator.connection && navigator.connection.saveData);
   let introOn = false, introWatch = 0;
   const endIntro = () => {
     if (!introOn) return;
     introOn = false;
     clearInterval(introWatch);
+    introVid.pause();
     const hadFocus = intro.contains(document.activeElement);
     intro.classList.add('out');
-    revealPage(reduced ? 0 : 120);
+    // The curtain passes the hero names a little before mid-lift, so they start settling just as they are uncovered.
+    revealPage(280);
     if (hadFocus) $('.nav .logo').focus({ preventScroll: true });
     setTimeout(() => {
       intro.hidden = true;
-      introVid.pause(); introVid.removeAttribute('src'); introVid.load();
-    }, 850);
+      document.body.classList.remove('intro-on');
+      introVid.removeAttribute('src'); introVid.load();
+    }, INTRO_LIFT + 80);
   };
   const startIntro = () => {
     introOn = true;
