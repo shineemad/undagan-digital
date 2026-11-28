@@ -36,13 +36,13 @@ Halaman memutar `musik/lagu-pernikahan-kita.mp3` (Lagu Pernikahan Kita, Tiara An
 
 Setelah tamu menekan "Buka Undangan", pintu cover terbuka ke film pembuka 18 detik (`video/pembuka.mp4`, 720×1280, H.264, tanpa suara, 0,9 MB). Lagu undangan sudah mulai berputar dari ketukan yang sama, jadi film dan lagu berjalan bersama. Setelah film selesai, halaman undangan muncul dan hero mulai beranimasi.
 
-- Isi film diambil dari undangan sendiri: bingkai emas dan monogram F/N, foto mempelai dalam bingkai lengkung dengan nama FAKHRIY / dan / NISA, ayat QS. Ar-Rum [30]: 21, tiga foto galeri, lalu tanggal dan tempat resepsi.
+- Film ini tidak mengulang isi undangan (tanpa tanggal, tempat, ayat, atau jadwal). Isinya kata-kata ajakan untuk datang, dengan gaya visual undangan (mawar, bingkai emas, monogram F/N): "Assalamu’alaikum Warahmatullahi Wabarakatuh", "Dengan penuh sukacita kami mengundang Bapak/Ibu/Saudara/i untuk hadir dan berbagi kebahagiaan", "Kehadiran dan doa restu adalah hadiah terindah bagi kami", lalu "Sampai jumpa di hari istimewa kami" dengan foto mempelai dalam bingkai lengkung dan tanda tangan "Kami yang berbahagia, Fakhriy & Nisa". Setiap baris muncul mengikuti ketukan lagu.
 - Tombol "Lewati" muncul di kanan atas sejak detik ke-1,2. Tombol Esc juga melewati film. Tombol musik tetap bisa ditekan selama film diputar.
 - File film baru diunduh saat tombol "Buka Undangan" ditekan, jadi tidak menambah beban saat tautan pertama dibuka.
 - Film tidak diputar jika perangkat meminta animasi dikurangi (`prefers-reduced-motion`) atau mode hemat data aktif. Jika file gagal dimuat, belum mulai dalam 3,5 detik, atau macet 4 detik, undangan langsung terbuka tanpa film.
 - Di HP yang lebih tinggi dari 9:16, film mengisi layar dan sedikit terpotong di sisi kiri-kanan yang kosong. Di layar yang lebih lebar (desktop, tablet), film tampil sebagai kolom seperti halaman. Bingkai emas ganda di tepi film digambar oleh CSS (sama dengan cover), sehingga selalu utuh.
 
-Film dibuat dengan [HyperFrames](https://hyperframes.heygen.com) lewat alur `/brag`. Proyeknya ada di luar repo, di `../brag-output/composition/`. Folder yang sama juga berisi versi untuk dibagikan (`../brag-output/brag.mp4`, 1080×1920 dengan bingkai dan lagu), posternya (`brag.jpg`), dan teks share (`share-copy.txt`). Untuk membuat ulang versi web setelah mengubah komposisi, jalankan dari folder `brag-output/composition`:
+Film dibuat dengan [HyperFrames](https://hyperframes.heygen.com) lewat alur `/brag`. Proyeknya ada di luar repo, di `../brag-output-2026-11-28-182826/composition/`. Folder yang sama juga berisi versi untuk dibagikan (`brag.mp4`, 1080×1920 dengan bingkai dan lagu), posternya (`brag.jpg`), dan teks share (`share-copy.txt`). Versi film sebelumnya (yang masih menampilkan nama, ayat, tanggal, dan tempat) tersimpan di `../brag-output/`. Untuk membuat ulang versi web setelah mengubah komposisi, jalankan dari folder `brag-output-2026-11-28-182826/composition`:
 
 ```
 echo {"showFrame":false} > ..\web-vars.json
