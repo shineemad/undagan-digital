@@ -22,6 +22,9 @@
 <meta property="og:image:alt" content="Nisa dan Fakhriy dalam bingkai lengkung, dengan tulisan Fakhriy dan Nisa, Sabtu, 16 Januari 2027">
 <meta name="twitter:card" content="summary_large_image">
 <link rel="preload" href="font/cormorantgaramond-normal-latin.woff2" as="font" type="font/woff2" crossorigin>
+<!-- The cover photo is the first thing a guest sees; fetch it before the inline CSS and SVG are parsed. Media queries match the <picture> in the gate. -->
+<link rel="preload" href="foto/cover.webp" as="image" type="image/webp" fetchpriority="high" media="not all and (min-width:900px) and (min-aspect-ratio:5/4)">
+<link rel="preload" href="foto/galeri-11.webp" as="image" type="image/webp" fetchpriority="high" media="(min-width:900px) and (min-aspect-ratio:5/4)">
 <style>
 /* Self-hosted fonts (SIL Open Font License): Cormorant Garamond, Pinyon Script, Amiri. */
 @font-face {font-family: 'Amiri';font-style: normal;font-weight: 400;font-display: swap;src: url(font/amiri-normal-arabic.woff2) format('woff2');unicode-range: U+0600-06FF, U+0750-077F, U+0870-0891, U+0897-08E1, U+08E3-08FF, U+200C-200E, U+2010-2011, U+204F, U+2E41, U+FB50-FDFF, U+FE70-FE74, U+FE76-FEFC, U+102E0-102FB, U+10E60-10E7E, U+10EC2-10EC7, U+10EC9-10EEE, U+10EF0-10EFF, U+1EE00-1EE03, U+1EE05-1EE1F, U+1EE21-1EE22, U+1EE24, U+1EE27, U+1EE29-1EE32, U+1EE34-1EE37, U+1EE39, U+1EE3B, U+1EE42, U+1EE47, U+1EE49, U+1EE4B, U+1EE4D-1EE4F, U+1EE51-1EE52, U+1EE54, U+1EE57, U+1EE59, U+1EE5B, U+1EE5D, U+1EE5F, U+1EE61-1EE62, U+1EE64, U+1EE67-1EE6A, U+1EE6C-1EE72, U+1EE74-1EE77, U+1EE79-1EE7C, U+1EE7E, U+1EE80-1EE89, U+1EE8B-1EE9B, U+1EEA1-1EEA3, U+1EEA5-1EEA9, U+1EEAB-1EEBB, U+1EEF0-1EEF1;}
@@ -434,9 +437,29 @@ body.lb-open{overflow:hidden}
 /* ---------- gate (cover) ---------- */
 .gate{position:fixed;inset:0;z-index:80;perspective:1600px}
 .gate.gone{display:none}
-.face{position:absolute;inset:0;overflow:hidden;display:flex;align-items:center;justify-content:center;padding:40px 26px;
+.face{position:absolute;inset:0;overflow:hidden;display:flex;flex-direction:column;align-items:center;justify-content:flex-end;padding:40px 26px clamp(36px,7svh,72px);
   background:radial-gradient(ellipse at 50% 42%,#fffaf7 0%,var(--ivory) 55%,#f6e2de 100%);color:var(--ink);
   transition:transform 1.5s var(--ease-out),opacity 1.2s ease}
+/* Cover photo fills the space above the invitation text and fades out behind the monogram, so small text always sits on plain ivory.
+   When the text needs the whole height (short screens) the photo shrinks to nothing and the button stays in view. */
+.face-ph{flex:1 1 0;min-height:0;align-self:stretch;position:relative;margin:-40px -26px 0;pointer-events:none}
+.face-ph img{position:absolute;top:0;left:50%;width:min(100%,760px);height:calc(100% + 90px);transform:translateX(-50%);object-fit:cover;object-position:50% 40%;
+  -webkit-mask:linear-gradient(#000 max(30%,calc(100% - 200px)),transparent calc(100% - 20px));mask:linear-gradient(#000 max(30%,calc(100% - 200px)),transparent calc(100% - 20px))}
+@media (min-width:761px){
+  .face-ph img{-webkit-mask:linear-gradient(#000 max(30%,calc(100% - 200px)),transparent calc(100% - 20px)),linear-gradient(90deg,transparent,#000 16%,#000 84%,transparent);-webkit-mask-composite:source-in;
+    mask:linear-gradient(#000 max(30%,calc(100% - 200px)),transparent calc(100% - 20px)),linear-gradient(90deg,transparent,#000 16%,#000 84%,transparent);mask-composite:intersect}
+}
+.gate .vig{background:radial-gradient(ellipse 66% 40% at 50% 70%,rgba(253,247,244,.94) 0%,rgba(253,247,244,.7) 55%,rgba(253,247,244,0) 100%)}
+.face .f-date{margin-top:22px}
+/* Wide screens: split cover. The full portrait fills the left door and the text sits on the right door, divided by the gold seam. */
+@media (min-width:900px) and (min-aspect-ratio:5/4){
+  .face{flex-direction:row;align-items:stretch;justify-content:flex-start;padding:40px 26px}
+  .face-ph{flex:0 0 50%;margin:-40px 0 -40px -26px}
+  .face-ph img{left:0;width:100%;height:100%;transform:none;object-position:50% 30%;
+    -webkit-mask:linear-gradient(90deg,#000 60%,transparent 99%);-webkit-mask-composite:source-over;mask:linear-gradient(90deg,#000 60%,transparent 99%)}
+  .face .box{margin:auto}
+  .gate .vig{background:radial-gradient(ellipse 34% 58% at 75% 50%,rgba(253,247,244,.94) 0%,rgba(253,247,244,.7) 55%,rgba(253,247,244,0) 100%)}
+}
 .face.l{clip-path:inset(0 50% 0 0);transform-origin:left center}
 .face.r{clip-path:inset(0 0 0 50%);transform-origin:right center}
 .gate.open .face.l{transform:translateX(-18%) rotateY(62deg);opacity:0}
@@ -458,6 +481,13 @@ body.lb-open{overflow:hidden}
 @keyframes glow{50%{opacity:1}}
 .face .caps{color:var(--gold-t)}
 .face .box{will-change:translate}
+/* Short phones: tighten the text block so the photo keeps a readable band. */
+@media (max-height:720px) and (max-aspect-ratio:3/4){
+  .face .mono{width:54px;height:71px;margin-bottom:10px}
+  .face .f-date{margin-top:14px}
+  .face .guest{margin-top:18px}
+  .face .btn{margin-top:18px}
+}
 
 /* Scroll-linked effects run on the compositor via CSS scroll-driven animations; unsupported browsers keep a static page. */
 @supports (animation-timeline: scroll()) {
@@ -610,6 +640,7 @@ body.lb-open{overflow:hidden}
 <!-- ===== GATE / COVER ===== -->
 <div class="gate" id="gate">
   <div class="face l" id="faceL">
+    <div class="face-ph"><picture><source media="(min-width:900px) and (min-aspect-ratio:5/4)" srcset="foto/galeri-11.webp" width="800" height="1200"><img src="foto/cover.webp" width="800" height="768" fetchpriority="high" decoding="async" alt="" draggable="false"></picture></div>
     <svg class="cl" style="top:-70px;left:-90px;width:clamp(200px,56vw,330px)" viewBox="0 0 300 300"><use href="#roses"/></svg>
     <svg class="cl" style="top:-50px;right:-100px;width:clamp(190px,52vw,310px);transform:rotate(150deg)" viewBox="0 0 300 300"><use href="#roses"/></svg>
     <svg class="cl" style="bottom:-80px;left:-110px;width:clamp(200px,56vw,320px);transform:rotate(-60deg);opacity:.75" viewBox="0 0 300 300"><use href="#roses"/></svg>
@@ -621,7 +652,7 @@ body.lb-open{overflow:hidden}
       <div class="caps">Undangan Resepsi Pernikahan</div>
       <svg class="orn"><use href="#orn"/></svg>
       <p class="n">FAKHRIY</p><span class="a">dan</span><p class="n">NISA</p>
-      <div class="caps" style="margin-top:22px">Sabtu, 16 Januari 2027</div>
+      <div class="caps f-date">Sabtu, 16 Januari 2027</div>
       <p class="guest">Kepada Yth.<b class="guest-name">Bapak/Ibu/Saudara/i</b></p>
       <button class="btn open-btn" type="button">Buka Undangan</button>
     </div>
@@ -654,7 +685,7 @@ body.lb-open{overflow:hidden}
     <div class="vig"></div>
     <div class="in-wrap">
       <div class="caps hero-eb">Sabtu, 16 Januari 2027</div>
-      <div class="arch hero-ph"><span class="ph"><img src="foto/hero.webp" width="600" height="800" fetchpriority="high" decoding="async" alt="Nisa dan Fakhriy berbusana brokat merah muda dengan selempang hijau zaitun"></span></div>
+      <div class="arch hero-ph"><span class="ph"><img src="foto/hero.webp" width="600" height="800" decoding="async" alt="Nisa dan Fakhriy berbusana brokat merah muda dengan selempang hijau zaitun"></span></div>
       <h1 class="names" aria-label="Fakhriy dan Nisa"><span class="w" data-split aria-hidden="true">FAKHRIY</span><span class="amp" aria-hidden="true">dan</span><span class="w" data-split aria-hidden="true">NISA</span></h1>
       <svg class="orn rv"><use href="#orn"/></svg>
       <a class="btn hero-cta rv" href="#rsvp">Konfirmasi Kehadiran</a>
