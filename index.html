@@ -489,6 +489,30 @@ body.lb-open{overflow:hidden}
   .face .btn{margin-top:18px}
 }
 
+/* ---------- opening film: plays once after "Buka Undangan", the doors open onto it ---------- */
+.intro{position:fixed;inset:0;z-index:70;display:grid;place-items:center;background:radial-gradient(circle at 50% 0,#fbeae7,#f1e7e2 60%);transition:opacity .8s ease}
+.intro[hidden]{display:none}
+.intro.out{opacity:0;pointer-events:none}
+/* Wider than 9:16 (desktop, tablet): the film sits in a column like the page. Taller phones: it fills the screen, cropping only the plain sides. */
+.intro-box{position:relative;height:100%;aspect-ratio:9/16;max-width:100%;overflow:hidden;background:radial-gradient(ellipse 80% 60% at 50% 42%,#fffaf7 0%,var(--ivory) 55%,#f6e2de 100%);box-shadow:0 0 0 1px #b08a5533,0 0 80px #7a2e3b1f}
+@media (max-aspect-ratio:9/16){.intro-box{position:absolute;inset:0;height:auto;aspect-ratio:auto;box-shadow:none}}
+.intro-box video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block}
+/* Same double gold frame as the cover, drawn in CSS so it stays whole however the film is cropped. */
+.intro-box::before,.intro-box::after{content:"";position:absolute;z-index:1;pointer-events:none}
+.intro-box::before{inset:16px;border:1px solid #b08a5566}
+.intro-box::after{inset:22px;border:1px solid #b08a552a}
+.intro-skip{position:absolute;z-index:2;top:max(34px,calc(env(safe-area-inset-top) + 14px));right:34px;display:inline-flex;align-items:center;gap:6px;min-height:44px;padding:0 12px 0 16px;
+  font:600 12px var(--serif);letter-spacing:.24em;text-transform:uppercase;color:var(--rose);background:#fdf7f4e0;border:1px solid var(--gold);border-radius:2px;cursor:pointer;
+  opacity:0;transition:opacity .5s ease,background-color .2s ease,transform .16s var(--ease-out)}
+.intro-skip svg{width:14px;height:14px}
+.intro.ready .intro-skip{opacity:1}
+.intro-skip:active{transform:scale(.96)}
+.intro-skip:focus-visible{outline:2px solid var(--rose);outline-offset:3px}
+@media (hover:hover) and (pointer:fine){.intro-skip:hover{background:var(--ivory)}}
+/* The music toggle stays usable above the film. */
+.intro-on .music{z-index:75}
+.intro-on .toast{z-index:76}
+
 /* Scroll-linked effects run on the compositor via CSS scroll-driven animations; unsupported browsers keep a static page. */
 @supports (animation-timeline: scroll()) {
   .nav-prog{animation:grow linear both;animation-timeline:scroll(root)}
@@ -658,6 +682,14 @@ body.lb-open{overflow:hidden}
     </div>
   </div>
   <div class="seam"></div>
+</div>
+
+<!-- ===== OPENING FILM (made with HyperFrames from the invitation's own photos and copy) ===== -->
+<div class="intro" id="intro" hidden>
+  <div class="intro-box">
+    <video id="introVid" muted playsinline preload="none" disablepictureinpicture aria-hidden="true" tabindex="-1"></video>
+    <button class="intro-skip" type="button" id="introSkip" aria-label="Lewati video pembuka">Lewati<svg aria-hidden="true"><use href="#iNext"/></svg></button>
+  </div>
 </div>
 
 <div class="page" id="page">
@@ -1182,16 +1214,67 @@ body.lb-open{overflow:hidden}
     else start();
   }
 
+  // Everything that should animate in view waits until the page is actually visible (after the opening film).
+  const revealPage = heroDelay => {
+    document.body.classList.remove('locked', 'intro-on');
+    page.inert = false;
+    setTimeout(() => $('#beranda').classList.add('play'), heroDelay);
+    startReveal(); startPetals(); watchMap();
+  };
+
+  // Opening film: 18 s, muted (the song is already playing), streamed only after the tap.
+  // Skipped for reduced motion and Data Saver, and abandoned quietly if it cannot start or stalls,
+  // so a slow connection never stands between the guest and the invitation.
+  const intro = $('#intro'), introVid = $('#introVid'), introSkip = $('#introSkip');
+  const INTRO_SRC = 'video/pembuka.mp4';
+  const saveData = !!(navigator.connection && navigator.connection.saveData);
+  let introOn = false, introWatch = 0;
+  const endIntro = () => {
+    if (!introOn) return;
+    introOn = false;
+    clearInterval(introWatch);
+    const hadFocus = intro.contains(document.activeElement);
+    intro.classList.add('out');
+    revealPage(reduced ? 0 : 120);
+    if (hadFocus) $('.nav .logo').focus({ preventScroll: true });
+    setTimeout(() => {
+      intro.hidden = true;
+      introVid.pause(); introVid.removeAttribute('src'); introVid.load();
+    }, 850);
+  };
+  const startIntro = () => {
+    introOn = true;
+    document.body.classList.add('intro-on');
+    intro.hidden = false;
+    introVid.src = INTRO_SRC;
+    const p = introVid.play();
+    if (p && p.catch) p.catch(endIntro);
+    const t0 = performance.now();
+    let lastT = -1, still = 0;
+    introWatch = setInterval(() => {
+      if (document.hidden) return;
+      const t = introVid.currentTime;
+      if (t > lastT + 0.01) { lastT = t; still = 0; } else still += 0.5;
+      if ((lastT <= 0.05 && performance.now() - t0 > 3500) || still >= 4) endIntro();
+    }, 500);
+    setTimeout(() => { if (introOn) intro.classList.add('ready'); }, 1200);
+    setTimeout(() => { if (introOn && !intro.contains(document.activeElement)) introSkip.focus({ preventScroll: true }); }, 1650);
+  };
+  introVid.addEventListener('ended', endIntro);
+  introVid.addEventListener('error', endIntro);
+  introSkip.addEventListener('click', endIntro);
+  addEventListener('keydown', e => { if (e.key === 'Escape' && introOn) endIntro(); });
+
   const openGate = () => {
     if (gate.classList.contains('open')) return;
     haptic(10);
     gate.classList.add('open');
-    document.body.classList.remove('locked');
     document.body.classList.add('opened');
-    page.inert = false;
     setMusic(true);
-    setTimeout(() => $('#beranda').classList.add('play'), reduced ? 0 : 420);
-    startReveal(); startPetals(); enableTilt(); watchMap();
+    // iOS only allows the motion-permission prompt inside this tap, so tilt is armed here even while the film plays.
+    enableTilt();
+    if (!reduced && !saveData) startIntro();
+    else revealPage(reduced ? 0 : 420);
     setTimeout(() => gate.classList.add('gone'), 1600);
   };
   gate.addEventListener('click', e => { if (e.target.closest('.open-btn')) openGate(); });

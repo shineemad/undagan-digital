@@ -13,6 +13,7 @@ favicon.svg  Ikon tab browser (monogram F/N)
 font/        Font yang di-host sendiri (woff2) beserta lisensinya
 foto/        Foto mempelai dan galeri (WebP, sudah dioptimalkan) dan og.jpg untuk pratinjau tautan
 musik/       Musik latar (MP3)
+video/       Video pembuka setelah "Buka Undangan" (MP4, tanpa suara)
 ```
 
 ## Menjalankan
@@ -30,6 +31,24 @@ Tag `og:url`, `og:image`, dan `link rel="canonical"` memakai alamat lengkap `htt
 ## Musik
 
 Halaman memutar `musik/lagu-pernikahan-kita.mp3` (Lagu Pernikahan Kita, Tiara Andini & Arsy Widianto) setelah tombol "Buka Undangan" ditekan, berulang terus. File baru diunduh saat tombol itu ditekan (`preload="none"`), jadi tamu yang hanya membuka tautan tidak menghabiskan kuota untuk musik. Pada jaringan 4G lambat, musik mulai terdengar kurang dari setengah detik setelah tombol ditekan karena MP3 diputar sambil diunduh. File ini sudah dipotong di akhir lagu (detik 262,5, tanpa jeda hening) dan dikompres ke MP3 128 kbps (4,2 MB). Untuk mengganti lagu, timpa file tersebut dengan nama yang sama. Jika file tidak ada atau gagal diputar, undangan tetap berjalan dan tombol musik tampil dalam keadaan berhenti.
+
+## Video pembuka
+
+Setelah tamu menekan "Buka Undangan", pintu cover terbuka ke film pembuka 18 detik (`video/pembuka.mp4`, 720×1280, H.264, tanpa suara, 0,9 MB). Lagu undangan sudah mulai berputar dari ketukan yang sama, jadi film dan lagu berjalan bersama. Setelah film selesai, halaman undangan muncul dan hero mulai beranimasi.
+
+- Isi film diambil dari undangan sendiri: bingkai emas dan monogram F/N, foto mempelai dalam bingkai lengkung dengan nama FAKHRIY / dan / NISA, ayat QS. Ar-Rum [30]: 21, tiga foto galeri, lalu tanggal dan tempat resepsi.
+- Tombol "Lewati" muncul di kanan atas sejak detik ke-1,2. Tombol Esc juga melewati film. Tombol musik tetap bisa ditekan selama film diputar.
+- File film baru diunduh saat tombol "Buka Undangan" ditekan, jadi tidak menambah beban saat tautan pertama dibuka.
+- Film tidak diputar jika perangkat meminta animasi dikurangi (`prefers-reduced-motion`) atau mode hemat data aktif. Jika file gagal dimuat, belum mulai dalam 3,5 detik, atau macet 4 detik, undangan langsung terbuka tanpa film.
+- Di HP yang lebih tinggi dari 9:16, film mengisi layar dan sedikit terpotong di sisi kiri-kanan yang kosong. Di layar yang lebih lebar (desktop, tablet), film tampil sebagai kolom seperti halaman. Bingkai emas ganda di tepi film digambar oleh CSS (sama dengan cover), sehingga selalu utuh.
+
+Film dibuat dengan [HyperFrames](https://hyperframes.heygen.com) lewat alur `/brag`. Proyeknya ada di luar repo, di `../brag-output/composition/`. Folder yang sama juga berisi versi untuk dibagikan (`../brag-output/brag.mp4`, 1080×1920 dengan bingkai dan lagu), posternya (`brag.jpg`), dan teks share (`share-copy.txt`). Untuk membuat ulang versi web setelah mengubah komposisi, jalankan dari folder `brag-output/composition`:
+
+```
+echo {"showFrame":false} > ..\web-vars.json
+npx hyperframes render --quality delivery --variables-file ..\web-vars.json --output ../web-noframe.mp4
+ffmpeg -y -i ../web-noframe.mp4 -an -vf scale=720:1280:flags=lanczos -c:v libx264 -preset slow -crf 26 -profile:v high -level 4.0 -pix_fmt yuv420p -movflags +faststart ../../undangan-fakhriy-nova/video/pembuka.mp4
+```
 
 ## Foto
 
