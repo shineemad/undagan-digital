@@ -35,6 +35,23 @@ Halaman memutar `musik/lagu-pernikahan-kita.mp3` (Lagu Pernikahan Kita, Tiara An
 
 Section Mempelai memakai `foto/mempelai-fakhriy.webp` dan `foto/mempelai-nisa.webp`. Hero memakai `foto/hero.webp`, section "bersama" memakai `foto/bersama-480.webp` dan `bersama-780.webp`, dan penutup memakai `foto/penutup.webp`. Section Galeri memakai `foto/galeri-01.webp` sampai `galeri-13.webp` (800×1200, untuk tampilan penuh) dan versi `-480.webp` (480×720, untuk baris foto yang berjalan otomatis). Baris foto bisa digeser, berhenti saat disentuh atau saat tombol jeda ditekan, dan tombol "Lihat Semua Foto" membuka semua foto dalam lightbox. Untuk mengganti foto, timpa file dengan nama dan ukuran yang sama, lalu perbarui teks `alt` di `index.html` jika isi fotonya berbeda.
 
+## Font
+
+Font di folder `font/` di-host sendiri. Tiga file dipangkas (subset) hanya ke huruf yang dipakai agar unduhan awal lebih ringan:
+
+- `amiri-normal-arabic.woff2` (32 KB, aslinya 106 KB): hanya huruf dan harakat ayat QS. Ar-Rum: 21 di section Ayat.
+- `amiri-normal-latin.woff2` (kurang dari 1 KB, aslinya 19 KB): hanya spasi di antara kata ayat.
+- `cormorantgaramond-italic-latin-ext.woff2` (16 KB, aslinya 34 KB): Latin Extended-A dan huruf transliterasi (ā ī ū ḥ ṣ ṭ ḍ ẓ ʿ ʾ) untuk teks miring, termasuk ucapan tamu.
+
+Jika teks Arab di section Ayat diganti, font Amiri harus dibuat ulang. Jika tidak, huruf baru akan tampil dengan font cadangan. File aslinya ada di riwayat git commit `ee0df6a`. Jalankan di Command Prompt dari folder ini, dengan teks Arab baru disimpan di `ayat.txt` (UTF-8):
+
+```
+git show ee0df6a:font/amiri-normal-arabic.woff2 > amiri-asli.woff2
+python -m pip install fonttools brotli
+python -m fontTools.subset amiri-asli.woff2 --text-file=ayat.txt --unicodes=U+200C,U+200D,U+060C,U+061B,U+061F,U+06D4,U+FD3E,U+FD3F --layout-features=* --flavor=woff2 --output-file=font/amiri-normal-arabic.woff2
+del amiri-asli.woff2
+```
+
 ## Warna
 
 Tema terang "Blush & Sage": latar gading dan merah muda pucat, judul dan tombol mawar tua, ornamen emas, daun sage. Section Ayat adalah satu-satunya blok berwarna tua. Semua warna diatur lewat variabel CSS di `:root` pada `index.html` (`--ivory`, `--blush-bg`, `--rose`, `--gold`, `--sage`, dan lainnya). Warna mawar SVG ada di gradien `#rp`, `#rp2`, dan `#lg`.
